@@ -30,7 +30,7 @@ session_start();
         $('#logout').on('click',function(e){
             e.preventDefault();
             $.ajax({
-                url: "logout.php",
+                url: "scripts/logout.php",
             }).done(function( data ) {
                 location.reload();
             });

@@ -76,7 +76,7 @@
         $('#registerform').on('submit',function(e){
             e.preventDefault();
             $.ajax({
-                url: "rejestracja_check.php",
+                url: "scripts/rejestracja_check.php",
                 method: 'POST',
                 data: {
                     login: $('#login').val(),

@@ -64,7 +64,7 @@
         $('#loginform').on('submit',function(e){
             e.preventDefault();
             $.ajax({
-                url: "login_check.php",
+                url: "scripts/login_check.php",
                 method: 'POST',
                 data: {
                     login: $('#login').val(),

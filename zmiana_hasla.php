@@ -57,7 +57,7 @@
         $('#form').on('submit',function(e){
             e.preventDefault();
             $.ajax({
-                url: "email_check.php",
+                url: "scripts/email_check.php",
                 method: 'POST',
                 data: {
                     email: $('#email').val(),
