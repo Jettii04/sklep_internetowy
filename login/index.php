@@ -64,7 +64,7 @@
         $('#loginform').on('submit',function(e){
             e.preventDefault();
             $.ajax({
-                url: "scripts/login_check.php",
+                url: "../scripts/login_check.php",
                 method: 'POST',
                 data: {
                     login: $('#login').val(),
@@ -72,9 +72,9 @@
                 }
             }).done(function( data ) {
                 if(data=="login"){
-                    window.location.assign('index.php');
+                    window.location.assign('../');
                 }else if(data=="admin"){
-                    window.location.assign('panel_administratora.php');
+                    window.location.assign('../admin');
                 }else{
                     $('#loginform').html(data);
                 }
