@@ -3,6 +3,7 @@ session_start();
 if(!isset($_SESSION['login'])){
     header("location: ../");
 }
+require_once('../../scripts/database.php');
 ?> 
 <!DOCTYPE html>
 <html lang="pl">
@@ -60,12 +61,12 @@ if(!isset($_SESSION['login'])){
     </style>
 </head>
 <body>
-<form action="../katalog/" method="get">
+<form action="../../katalog/" method="get">
 <!-- navbar -->
 <nav class="navbar navbar-expand-md navbar-dark bg-black sticky-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="../">
-        <img src="../assets/images/biden.jpg" style="width: 30px; height: 30px; object-fit: cover;" width="30" height="30" alt="">    
+        <a class="navbar-brand" href="../../">
+        <img src="../../assets/images/biden.jpg" style="width: 30px; height: 30px; object-fit: cover;" width="30" height="30" alt="">    
         Greg.inc</a>
         <div class="d-flex me-auto ms-auto">
             <input class="form-control me-2" type="search" name="search" placeholder="Szukaj produktów..." aria-label="Search">
@@ -83,14 +84,14 @@ if(!isset($_SESSION['login'])){
                 if(isset($_SESSION['login'])){
                     echo'
                         <li class="nav-item dropdown me-2 d-none d-md-block">
-                        <a class="nav-link" href="../konto/ulubione">
+                        <a class="nav-link" href="">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M11.8227 4.77124L12 4.94862L12.1773 4.77135C14.4244 2.52427 18.0676 2.52427 20.3147 4.77134C22.5618 7.01842 22.5618 10.6616 20.3147 12.9087L13.591 19.6324C12.7123 20.5111 11.2877 20.5111 10.409 19.6324L3.6853 12.9086C1.43823 10.6615 1.43823 7.01831 3.6853 4.77124C5.93237 2.52417 9.5756 2.52417 11.8227 4.77124ZM10.762 5.8319C9.10073 4.17062 6.40725 4.17062 4.74596 5.8319C3.08468 7.49319 3.08468 10.1867 4.74596 11.848L11.4697 18.5718C11.7625 18.8647 12.2374 18.8647 12.5303 18.5718L19.254 11.8481C20.9153 10.1868 20.9153 7.49329 19.254 5.83201C17.5927 4.17072 14.8993 4.17072 13.238 5.83201L12.5304 6.53961C12.3897 6.68026 12.199 6.75928 12 6.75928C11.8011 6.75928 11.6104 6.68026 11.4697 6.53961L10.762 5.8319Z" fill="#ffffff"/>
                             </svg>
                         </a>
                         </li>
                         <li class="nav-item dropdown me-2 d-none d-md-block">
-                        <a class="nav-link" href="../koszyk/">
+                        <a class="nav-link" href="../../koszyk/">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M2.31641 3.25C1.90219 3.25 1.56641 3.58579 1.56641 4C1.56641 4.41421 1.90219 4.75 2.31641 4.75H3.49696C3.87082 4.75 4.18759 5.02534 4.23965 5.39556L5.49371 14.3133C5.6499 15.424 6.60021 16.25 7.72179 16.25L18.0664 16.25C18.4806 16.25 18.8164 15.9142 18.8164 15.5C18.8164 15.0858 18.4806 14.75 18.0664 14.75L7.72179 14.75C7.34793 14.75 7.03116 14.4747 6.9791 14.1044L6.85901 13.2505H17.7114C18.6969 13.2505 19.5678 12.6091 19.8601 11.668L21.7824 5.48032C21.8531 5.25268 21.8114 5.00499 21.6701 4.81305C21.5287 4.62112 21.3045 4.50781 21.0662 4.50781H5.51677C5.14728 3.75572 4.37455 3.25 3.49696 3.25H2.31641ZM5.84051 6.00781L6.64807 11.7505H17.7114C18.0399 11.7505 18.3302 11.5367 18.4277 11.223L20.0478 6.00781H5.84051Z" fill="#ffffff"/>
                             <path d="M7.78418 17.75C6.81768 17.75 6.03418 18.5335 6.03418 19.5C6.03418 20.4665 6.81768 21.25 7.78418 21.25C8.75068 21.25 9.53428 20.4665 9.53428 19.5C9.53428 18.5335 8.75068 17.75 7.78418 17.75Z" fill="#ffffff"/>
@@ -113,7 +114,7 @@ if(!isset($_SESSION['login'])){
                 }else{
                     echo  '
                         <li class="nav-item dropdown me-2 d-none d-md-block">
-                        <a class="nav-link" href="../koszyk/">
+                        <a class="nav-link" href="../../koszyk/">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M2.31641 3.25C1.90219 3.25 1.56641 3.58579 1.56641 4C1.56641 4.41421 1.90219 4.75 2.31641 4.75H3.49696C3.87082 4.75 4.18759 5.02534 4.23965 5.39556L5.49371 14.3133C5.6499 15.424 6.60021 16.25 7.72179 16.25L18.0664 16.25C18.4806 16.25 18.8164 15.9142 18.8164 15.5C18.8164 15.0858 18.4806 14.75 18.0664 14.75L7.72179 14.75C7.34793 14.75 7.03116 14.4747 6.9791 14.1044L6.85901 13.2505H17.7114C18.6969 13.2505 19.5678 12.6091 19.8601 11.668L21.7824 5.48032C21.8531 5.25268 21.8114 5.00499 21.6701 4.81305C21.5287 4.62112 21.3045 4.50781 21.0662 4.50781H5.51677C5.14728 3.75572 4.37455 3.25 3.49696 3.25H2.31641ZM5.84051 6.00781L6.64807 11.7505H17.7114C18.0399 11.7505 18.3302 11.5367 18.4277 11.223L20.0478 6.00781H5.84051Z" fill="#ffffff"/>
                             <path d="M7.78418 17.75C6.81768 17.75 6.03418 18.5335 6.03418 19.5C6.03418 20.4665 6.81768 21.25 7.78418 21.25C8.75068 21.25 9.53428 20.4665 9.53428 19.5C9.53428 18.5335 8.75068 17.75 7.78418 17.75Z" fill="#ffffff"/>
@@ -150,7 +151,74 @@ if(!isset($_SESSION['login'])){
         </div>
         <!-- Ciało storny -->
         <div class="p-4">
-            
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex">
+                <?php 
+                $data = [
+                    'user' => $_SESSION['login'],
+                ];
+                try {
+                $q = $pdo->prepare("SELECT * FROM items WHERE item_id IN (SELECT item_id FROM favourites WHERE user=:user)");
+                $q->execute($data);
+                }catch (PDOException $e) {
+                    echo 'Nie udało się odczytać danych z bazy';
+                    //exit();
+                }
+
+                foreach ($q as $row){
+                echo '
+                <div class="col">
+                    <a href="../../produkt/?item='.$row['item_id'].'" style="color: inherit; text-decoration: inherit;">
+                    <div class="card d-flex align-items-stretch">
+                        <img src="data:image;base64,'.base64_encode($row['main_img']).'" class="card-img-top card-img" alt="'.$row['name'].'">
+                        <div class="card-body ">
+                            <h5 class="card-title">'.$row['name'].'</h5>
+                            <p class="card-text">'.$row['short_description'].'</p>
+                            <ul class="list-unstyled">
+                                <li><strong>Cena:</strong> '.$row['price'].' PLN</li>
+                                <li><strong>Ocena:</strong>
+                                '; 
+                                $data = [
+                                    'id' => $row['item_id'],
+                                ];
+                                try {
+                                $a = $pdo->prepare("SELECT AVG(rating) FROM reviews WHERE item_id = :id");
+                                $a->execute($data);
+                                $avgRating = $a->fetchColumn(); 
+                                }catch (PDOException $e) {
+                                    echo 'Nie udało się odczytać danych z bazy';
+                                    //exit();
+                                }
+                                for ($s=0;$s<floor($avgRating);$s++){
+                                    echo'★';
+                                }
+                                for ($s=0;$s<5-floor($avgRating);$s++){
+                                    echo'☆';
+                                }
+                                echo '('.round($avgRating,2).')</li></ul>';
+                echo '
+                            <div class="row">
+                                <div class="col-7">
+                                <a href="" class="btn btn-outline-light">Dodaj do koszyka</a>
+                                </div>
+                                <div class="col" style="text-align: right;">';
+                     if(isset($_SESSION['login'])){
+                         echo ' <a href="" class="btn btn-primary me-2">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.8227 4.77124L12 4.94862L12.1773 4.77135C14.4244 2.52427 18.0676 2.52427 20.3147 4.77134C22.5618 7.01842 22.5618 10.6616 20.3147 12.9087L13.591 19.6324C12.7123 20.5111 11.2877 20.5111 10.409 19.6324L3.6853 12.9086C1.43823 10.6615 1.43823 7.01831 3.6853 4.77124C5.93237 2.52417 9.5756 2.52417 11.8227 4.77124ZM10.762 5.8319C9.10073 4.17062 6.40725 4.17062 4.74596 5.8319C3.08468 7.49319 3.08468 10.1867 4.74596 11.848L11.4697 18.5718C11.7625 18.8647 12.2374 18.8647 12.5303 18.5718L19.254 11.8481C20.9153 10.1868 20.9153 7.49329 19.254 5.83201C17.5927 4.17072 14.8993 4.17072 13.238 5.83201L12.5304 6.53961C12.3897 6.68026 12.199 6.75928 12 6.75928C11.8011 6.75928 11.6104 6.68026 11.4697 6.53961L10.762 5.8319Z" fill="#ffffff"/>
+                                    </svg>
+                                </a>';
+                     }
+                echo '
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                ';
+                }
+                ?>
+            </div>
         </div>
     </div>
 </div>
@@ -164,10 +232,10 @@ if(!isset($_SESSION['login'])){
           <h5 class="mb-3" style="letter-spacing: 2px; color: #7f4722;">sklep</h5>
           <ul class="list-unstyled mb-0">
             <li class="mb-1">
-              <a href="../" style="color: #4f4f4f;">strona główna</a>
+              <a href="../../" style="color: #4f4f4f;">strona główna</a>
             </li>
             <li class="mb-1">
-              <a href="../katalog/" style="color: #4f4f4f;">katalog</a>
+              <a href="../../katalog/" style="color: #4f4f4f;">katalog</a>
             </li>
           </ul>
         </div>
@@ -194,19 +262,19 @@ if(!isset($_SESSION['login'])){
           <h5 class="mb-3" style="letter-spacing: 2px; color: #7f4722;">konto</h5>
           <ul class="list-unstyled mb-0">
             <li class="mb-1">
-              <a href="../konto/" style="color: #4f4f4f;">konto</a>
+              <a href="../" style="color: #4f4f4f;">konto</a>
             </li>
             <li class="mb-1">
-              <a href="../konto/ulubione/" style="color: #4f4f4f;">ulubione</a>
+              <a href="" style="color: #4f4f4f;">ulubione</a>
             </li>
             <li class="mb-1">
-              <a href="../konto/zamowienia" style="color: #4f4f4f;">zamówienia</a>
+              <a href="../zamowienia" style="color: #4f4f4f;">zamówienia</a>
             </li>
             <li class="mb-1">
-              <a href="../koszyk/" style="color: #4f4f4f;">koszyk</a>
+              <a href="../../koszyk/" style="color: #4f4f4f;">koszyk</a>
             </li>
             <li class="mb-1">
-              <a href="../konto/dane/" style="color: #4f4f4f;">dane</a>
+              <a href="../dane/" style="color: #4f4f4f;">dane</a>
             </li>
           </ul>
         </div>
@@ -229,18 +297,18 @@ if(!isset($_SESSION['login'])){
         // funkcja ajax uruchamiająca plik logout.php
         function logout(){
             $.ajax({
-                url: "../scripts/logout.php",
+                url: "../../scripts/logout.php",
             }).done(function( data ) {
                 location.reload();
             });
         }
 
         function login(){
-            window.location.assign("../login/");
+            window.location.assign("../../login/");
         }
 
         function register(){
-            window.location.assign("../rejestr/");
+            window.location.assign("../../rejestr/");
         }
         </script>
 </body>
