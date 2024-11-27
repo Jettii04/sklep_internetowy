@@ -162,8 +162,10 @@ require_once('../../scripts/database.php');
         </div>
         <!-- Ciało storny -->
         <div class="p-4">
-        <h3>Ulubione</h3>    
+        <div style="color: black">
+        <h2>Ulubione</h2>    
         <hr>
+        </div>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex">
                 <?php 
                 $data = [
