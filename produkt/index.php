@@ -111,9 +111,6 @@ $categoryName = $q->fetchColumn();
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="">O nas</a>
-                </li>
                 <?php 
                 if(isset($_SESSION['login'])){
                     echo'
@@ -133,6 +130,17 @@ $categoryName = $q->fetchColumn();
                             </svg>
                         </a>
                         </li>
+                        <li class="nav-item d-block d-md-none">
+                            <a class="nav-link" href="../konto">Konto</a>
+                        </li>
+                        <li class="nav-item d-block d-md-none">
+                            <a class="nav-link" href="../konto/zamowienia">Zamówienia</a>
+                        </li>
+                        <li class="nav-item d-block d-md-none">
+                            <a class="nav-link" href="javascript:logout('.')">
+                                <button class="btn btn btn-outline-secondary"  type="button">Wyloguj</button>
+                            </a>
+                        </li>
                         <li class="nav-item dropdown d-none d-md-block">
                             <button class="btn btn-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <svg width="24" height="24" viewBox="0 0 25 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
@@ -141,7 +149,11 @@ $categoryName = $q->fetchColumn();
                                 </svg>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="javascript:logout('.')">Wyloguj</a></li>
+                                <li><a class="dropdown-item" href="../konto">Konto</a></li>
+                                <li><a class="dropdown-item" href="../konto/zamowienia">Zamówienia</a></li>
+                                <li><a class="" href="javascript:logout('.')">
+                                <button class="btn btn btn-outline-secondary ms-2"  type="button">Wyloguj</button>
+                                </a></li>
                             </ul>
                         </li>
                         ';
@@ -227,14 +239,33 @@ $categoryName = $q->fetchColumn();
                     <p class="mb-4"><?php echo $desription; ?></p>
                     <div class="d-flex">
                         <?php
-                        if(isset($_SESSION['login'])){
-                            echo'
-                                <a class="btn btn-primary me-3" href="">
+                        $data = [
+                            'user' => $_SESSION['login'],
+                        ];
+                        $isAdded=false;
+    
+                        $in = $pdo->prepare("SELECT item_id FROM favourites where user = :user");
+                        $in->execute($data);
+                        
+                        foreach($in as $r){
+                            if($_GET['item']==$r['item_id']){
+                                $isAdded=true;
+                                break;
+                            }
+                        }
+                                
+                        if(isset($_SESSION['login'])&&$isAdded==true){
+                            echo ' <a href="javascript:add_to_favourites('."'".$_GET['item']."'".')" class="btn btn-primary me-2" id="'.$_GET['item'].'">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="#ff0000" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.8227 4.77124L12 4.94862L12.1773 4.77135C14.4244 2.52427 18.0676 2.52427 20.3147 4.77134C22.5618 7.01842 22.5618 10.6616 20.3147 12.9087L13.591 19.6324C12.7123 20.5111 11.2877 20.5111 10.409 19.6324L3.6853 12.9086C1.43823 10.6615 1.43823 7.01831 3.6853 4.77124C5.93237 2.52417 9.5756 2.52417 11.8227 4.77124ZM10.762 5.8319C9.10073 4.17062 6.40725 4.17062 4.74596 5.8319C3.08468 7.49319 3.08468 10.1867 4.74596 11.848L11.4697 18.5718C11.7625 18.8647 12.2374 18.8647 12.5303 18.5718L19.254 11.8481C20.9153 10.1868 20.9153 7.49329 19.254 5.83201C17.5927 4.17072 14.8993 4.17072 13.238 5.83201L12.5304 6.53961C12.3897 6.68026 12.199 6.75928 12 6.75928C11.8011 6.75928 11.6104 6.68026 11.4697 6.53961L10.762 5.8319Z" fill="#ff0000"/>
+                                    </svg>
+                                </a>';
+                        }else if(isset($_SESSION['login'])){
+                            echo ' <a href="javascript:add_to_favourites('."'".$_GET['item']."'".')" class="btn btn-primary me-2" id="'.$_GET['item'].'">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M11.8227 4.77124L12 4.94862L12.1773 4.77135C14.4244 2.52427 18.0676 2.52427 20.3147 4.77134C22.5618 7.01842 22.5618 10.6616 20.3147 12.9087L13.591 19.6324C12.7123 20.5111 11.2877 20.5111 10.409 19.6324L3.6853 12.9086C1.43823 10.6615 1.43823 7.01831 3.6853 4.77124C5.93237 2.52417 9.5756 2.52417 11.8227 4.77124ZM10.762 5.8319C9.10073 4.17062 6.40725 4.17062 4.74596 5.8319C3.08468 7.49319 3.08468 10.1867 4.74596 11.848L11.4697 18.5718C11.7625 18.8647 12.2374 18.8647 12.5303 18.5718L19.254 11.8481C20.9153 10.1868 20.9153 7.49329 19.254 5.83201C17.5927 4.17072 14.8993 4.17072 13.238 5.83201L12.5304 6.53961C12.3897 6.68026 12.199 6.75928 12 6.75928C11.8011 6.75928 11.6104 6.68026 11.4697 6.53961L10.762 5.8319Z" fill="#ffffff"/>
                                     </svg>
-                                </a>
-                                ';
+                                </a>';
                         }
                         ?>
                         <a href="#" class="btn btn-outline-light">Dodaj do koszyka</a>
@@ -364,6 +395,25 @@ $categoryName = $q->fetchColumn();
 
         function register(){
             window.location.assign("../rejestr/");
+        }
+
+        function add_to_favourites(item){
+            var id=item;
+            //alert(id);
+            $.ajax({
+                url: "../scripts/add_to_favourites.php",
+                method: 'POST',
+                data: {
+                    item: id
+                }
+            }).done(function( data ) {
+                //alert(data);
+                if(data=="add"){
+                  document.getElementById(id).innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="#ff0000" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)"> <path fill-rule="evenodd" clip-rule="evenodd" d="M11.8227 4.77124L12 4.94862L12.1773 4.77135C14.4244 2.52427 18.0676 2.52427 20.3147 4.77134C22.5618 7.01842 22.5618 10.6616 20.3147 12.9087L13.591 19.6324C12.7123 20.5111 11.2877 20.5111 10.409 19.6324L3.6853 12.9086C1.43823 10.6615 1.43823 7.01831 3.6853 4.77124C5.93237 2.52417 9.5756 2.52417 11.8227 4.77124ZM10.762 5.8319C9.10073 4.17062 6.40725 4.17062 4.74596 5.8319C3.08468 7.49319 3.08468 10.1867 4.74596 11.848L11.4697 18.5718C11.7625 18.8647 12.2374 18.8647 12.5303 18.5718L19.254 11.8481C20.9153 10.1868 20.9153 7.49329 19.254 5.83201C17.5927 4.17072 14.8993 4.17072 13.238 5.83201L12.5304 6.53961C12.3897 6.68026 12.199 6.75928 12 6.75928C11.8011 6.75928 11.6104 6.68026 11.4697 6.53961L10.762 5.8319Z" fill="#ff0000"/></svg>';
+                }else if(data=="remove"){
+                  document.getElementById(id).innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)"> <path fill-rule="evenodd" clip-rule="evenodd" d="M11.8227 4.77124L12 4.94862L12.1773 4.77135C14.4244 2.52427 18.0676 2.52427 20.3147 4.77134C22.5618 7.01842 22.5618 10.6616 20.3147 12.9087L13.591 19.6324C12.7123 20.5111 11.2877 20.5111 10.409 19.6324L3.6853 12.9086C1.43823 10.6615 1.43823 7.01831 3.6853 4.77124C5.93237 2.52417 9.5756 2.52417 11.8227 4.77124ZM10.762 5.8319C9.10073 4.17062 6.40725 4.17062 4.74596 5.8319C3.08468 7.49319 3.08468 10.1867 4.74596 11.848L11.4697 18.5718C11.7625 18.8647 12.2374 18.8647 12.5303 18.5718L19.254 11.8481C20.9153 10.1868 20.9153 7.49329 19.254 5.83201C17.5927 4.17072 14.8993 4.17072 13.238 5.83201L12.5304 6.53961C12.3897 6.68026 12.199 6.75928 12 6.75928C11.8011 6.75928 11.6104 6.68026 11.4697 6.53961L10.762 5.8319Z" fill="#ffffff"/></svg>';
+                }
+              });
         }
         </script>
 </body>
