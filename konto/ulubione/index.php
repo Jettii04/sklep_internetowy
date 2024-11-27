@@ -122,8 +122,19 @@ require_once('../../scripts/database.php');
                             </svg>
                         </a>
                         </li>
-                        <button class="btn btn-outline-success me-2" type="button" onclick="login();">Zaloguj się</button>
-                        <button class="btn btn btn-outline-secondary" type="button" onclick="register();">Zarejestruj</button>';
+                        <button class="btn btn-outline-success me-2 d-none d-md-block" type="button" onclick="login();">Zaloguj się</button>
+                        <button class="btn btn btn-outline-secondary d-none d-md-block" type="button" onclick="register();">Zarejestruj</button>
+                        <li class="nav-item d-block d-md-none">
+                            <a class="nav-link" href="javascript:logout('.')">
+                                <button class="btn btn-outline-success" type="button" onclick="login();">Zaloguj się</button>
+                            </a>
+                        </li>
+                        <li class="nav-item d-block d-md-none">
+                            <a class="nav-link" href="javascript:logout('.')">
+                                <button class="btn btn btn-outline-secondary" type="button" onclick="register();">Zarejestruj</button>
+                            </a>
+                        </li>
+                        ';
                 }
                 ?>
             </ul>
@@ -151,6 +162,8 @@ require_once('../../scripts/database.php');
         </div>
         <!-- Ciało storny -->
         <div class="p-4">
+        <h3>Ulubione</h3>    
+        <hr>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex">
                 <?php 
                 $data = [

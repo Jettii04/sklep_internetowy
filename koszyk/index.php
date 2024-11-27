@@ -118,8 +118,19 @@ session_start();
                             </svg>
                         </a>
                         </li>
-                        <button class="btn btn-outline-success me-2" type="button" onclick="login();">Zaloguj się</button>
-                        <button class="btn btn btn-outline-secondary" type="button" onclick="register();">Zarejestruj</button>';
+                        <button class="btn btn-outline-success me-2 d-none d-md-block" type="button" onclick="login();">Zaloguj się</button>
+                        <button class="btn btn btn-outline-secondary d-none d-md-block" type="button" onclick="register();">Zarejestruj</button>
+                        <li class="nav-item d-block d-md-none">
+                            <a class="nav-link" href="javascript:logout('.')">
+                                <button class="btn btn-outline-success" type="button" onclick="login();">Zaloguj się</button>
+                            </a>
+                        </li>
+                        <li class="nav-item d-block d-md-none">
+                            <a class="nav-link" href="javascript:logout('.')">
+                                <button class="btn btn btn-outline-secondary" type="button" onclick="register();">Zarejestruj</button>
+                            </a>
+                        </li>
+                        ';
                 }
                 ?>
             </ul>

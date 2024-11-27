@@ -66,7 +66,7 @@ require_once("../scripts/database.php");
         <img src="/assets/images/biden.jpg" style="width: 30px; height: 30px; object-fit: cover;" width="30" height="30" alt="">    
         Greg.inc</a>
         <div class="d-flex me-auto ms-auto">
-            <input class="form-control me-2" type="text" name="search" placeholder="Szukaj produktów..." aria-label="Search">
+            <input class="form-control me-2" type="text" name="search" placeholder="Szukaj produktów..." aria-label="Search" <?php if(isset($_GET['search'])){echo 'value="'.htmlspecialchars($_GET['search']).'"';}?>>
             <button class="btn btn-primary" type="submit">Szukaj</button>
         </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -122,7 +122,7 @@ require_once("../scripts/database.php");
                         ';
                 }else{
                     echo  '
-                        <li class="nav-item dropdown me-2 d-none d-md-block">
+                        <li class="nav-item dropdown me-2">
                         <a class="nav-link" href="../koszyk/">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M2.31641 3.25C1.90219 3.25 1.56641 3.58579 1.56641 4C1.56641 4.41421 1.90219 4.75 2.31641 4.75H3.49696C3.87082 4.75 4.18759 5.02534 4.23965 5.39556L5.49371 14.3133C5.6499 15.424 6.60021 16.25 7.72179 16.25L18.0664 16.25C18.4806 16.25 18.8164 15.9142 18.8164 15.5C18.8164 15.0858 18.4806 14.75 18.0664 14.75L7.72179 14.75C7.34793 14.75 7.03116 14.4747 6.9791 14.1044L6.85901 13.2505H17.7114C18.6969 13.2505 19.5678 12.6091 19.8601 11.668L21.7824 5.48032C21.8531 5.25268 21.8114 5.00499 21.6701 4.81305C21.5287 4.62112 21.3045 4.50781 21.0662 4.50781H5.51677C5.14728 3.75572 4.37455 3.25 3.49696 3.25H2.31641ZM5.84051 6.00781L6.64807 11.7505H17.7114C18.0399 11.7505 18.3302 11.5367 18.4277 11.223L20.0478 6.00781H5.84051Z" fill="#ffffff"/>
@@ -131,8 +131,19 @@ require_once("../scripts/database.php");
                             </svg>
                         </a>
                         </li>
-                        <button class="btn btn-outline-success me-2" type="button" onclick="login();">Zaloguj się</button>
-                        <button class="btn btn btn-outline-secondary" type="button" onclick="register();">Zarejestruj</button>';
+                        <button class="btn btn-outline-success me-2 d-none d-md-block" type="button" onclick="login();">Zaloguj się</button>
+                        <button class="btn btn btn-outline-secondary d-none d-md-block" type="button" onclick="register();">Zarejestruj</button>
+                        <li class="nav-item d-block d-md-none">
+                            <a class="nav-link" href="javascript:logout('.')">
+                                <button class="btn btn-outline-success" type="button" onclick="login();">Zaloguj się</button>
+                            </a>
+                        </li>
+                        <li class="nav-item d-block d-md-none">
+                            <a class="nav-link" href="javascript:logout('.')">
+                                <button class="btn btn btn-outline-secondary" type="button" onclick="register();">Zarejestruj</button>
+                            </a>
+                        </li>
+                        ';
                 }
                 ?>
             </ul>
