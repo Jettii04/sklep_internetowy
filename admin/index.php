@@ -15,7 +15,7 @@ if(!isset($_SESSION['admin']) || (isset($_SESSION['admin'])&&$_SESSION['admin']=
 </head>
 <body>
 <!-- navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-black sticky-top">
+<nav class="navbar navbar-expand-md navbar-dark bg-black sticky-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Panel administarcyjny</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -101,19 +101,8 @@ if(!isset($_SESSION['admin']) || (isset($_SESSION['admin'])&&$_SESSION['admin']=
           <div class="row">
               <div class="col" id="main">
                   <hr>
-                  <p><h1>dasdadddda
-                      dadsadsafsafasfsafsaaaaaaaaaaaf
-                      fsafsafsafsafsafsaf
-                      fsafsafsafsafsafsaffsa
-                      fsafsafsagwagw
-                      gwagwagsagwadsacdacd
-                      dcwacdwavdvwadcw
-                      dcwadwavdavw
-                      vdwavdwavd
-                      vdwavdwavdv
-                      vdwavdvwadwacd
-                      vdwavd
-                      dasdadddda dadsadsafsafasfsafsaaaaaaaaaaaf fsafsafsafsafsafsaf fsafsafsafsafsafsaffsa fsafsafsagwagw gwagwagsagwadsacdacd dcwacdwavdvwadcw dcwadwavdavw vdwavdwavd vdwavdwavdv vdwavdvwadwacd vdwavd</h1>
+                  <p>
+                    <h1></h1>
                   </p>
               </div>
           </div>
