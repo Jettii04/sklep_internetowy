@@ -201,7 +201,28 @@ $categoryName = $q->fetchColumn();
                 <div class="product-details">
                     <h2 class="mb-3"><?php echo $name; ?></h2>
                     <p class="mb-2"><strong>Kategoria:</strong> <?php echo $categoryName; ?></p>
-                    <p class="mb-2"><strong>Ocena:</strong> ★★★★☆ (4.5)</p>
+                    <p class="mb-2"><strong>Ocena:</strong> 
+                    <?php 
+                    $data = [
+                        'id' => $item,
+                    ];
+                    try {
+                    $q = $pdo->prepare("SELECT AVG(rating) FROM reviews WHERE item_id = :id");
+                    $q->execute($data);
+                    $avgRating = $q->fetchColumn(); 
+                    }catch (PDOException $e) {
+                        echo 'Nie udało się odczytać danych z bazy';
+                        //exit();
+                    }
+                    for ($s=0;$s<floor($avgRating);$s++){
+                        echo'★';
+                    }
+                    for ($s=0;$s<5-floor($avgRating);$s++){
+                        echo'☆';
+                    }
+                    echo '('.round($avgRating,2).')';
+                    ?>
+                    </p>
                     <p class="mb-3"><strong>Cena:</strong> <span class="text-warning"><?php echo $price; ?> PLN</span></p>
                     <p class="mb-4"><?php echo $desription; ?></p>
                     <div class="d-flex">
@@ -224,20 +245,37 @@ $categoryName = $q->fetchColumn();
     </div>
 
     <!-- Sekcja opinii -->
-    <div class="container mt-5 mb-3">
+    <div class="container mt-2 mb-3">
         <h3 class="mb-4">Opinie o produkcie</h3>
-        <div class="bg-dark p-4 rounded mb-3">
-            <p><strong>Jan Kowalski:</strong> Świetny produkt, spełnił moje oczekiwania!</p>
-            <p><strong>Ocena:</strong> ★★★★★</p>
-        </div>
-        <div class="bg-dark p-4 rounded mb-3">
-            <p><strong>Anna Nowak:</strong> Produkt jest dobry, ale mógłby być tańszy.</p>
-            <p><strong>Ocena:</strong> ★★★★☆</p>
-        </div>
-        <div class="bg-dark p-4 rounded">
-            <p><strong>Adam Zieliński:</strong> Nie jestem zadowolony. Produkt działa, ale wykonanie pozostawia wiele do życzenia.</p>
-            <p><strong>Ocena:</strong> ★★☆☆☆</p>
-        </div>
+        <?php 
+        $data = [
+            'id' => $item,
+        ];
+        try {
+        $q = $pdo->prepare("SELECT * FROM reviews WHERE item_id = :id");
+        $q->execute($data);
+
+        }catch (PDOException $e) {
+            echo 'Nie udało się odczytać danych z bazy';
+            //exit();
+        }
+
+        foreach($q as $row){
+            $i++;
+            echo '
+            <div class="bg-dark p-4 rounded mt-3">
+            <p><strong>'.$row['name'].' '.$row['surname'].':</strong> '.$row['description'].'</p>
+            <p><strong>Ocena:</strong>';
+            for ($s=0;$s<$row['rating'];$s++){
+                echo'★';
+            }
+            for ($s=0;$s<5-$row['rating'];$s++){
+                echo'☆';
+            }
+            echo '</p></div>
+            ';
+        }
+        ?>
     </div>
 
 <!-- Stopka -->
