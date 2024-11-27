@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pl">
-<head>
     <meta charset="UTF-8">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
@@ -21,31 +21,43 @@
             background-color: white;
         }
     </style>
+<head>
 </head>
 <body>
-
     <br>
     <div class="container">
         <div class="row justify-content-center">
             <div class="p-4 col-12 col-md-6 col-lg-4 text-center okno rounded-3">
-                <h2>Logowanie</h2>
-                <br>
-                <form id="loginform">
+                <h2>Załóż konto</h2>
+                <form id="registerform">
                     <div class="form-group">
                         <label  for="login">Login</label>
                         <input type="text" class="form-control mb-3" name="login" id="login" placeholder="Login" maxlength="30">
                     </div>
                     <div class="form-group">
-                        <label for="password">Hasło</label>
-                        <input type="password" class="form-control mb-1" name="password" id="password" placeholder="Hasło" maxlength="50">
-                        <a href="zmiana_hasla.php">Nie pamiętasz hasła?</a>
+                        <label  for="name">Imię</label>
+                        <input type="text" class="form-control mb-3" name="name" id="name" placeholder="Imię" maxlength="30">
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary mt-3" id="login_button">Zaloguj się</button>
+                        <label  for="surname">Nazwisko</label>
+                        <input type="text" class="form-control mb-3" name="surname" id="surname" placeholder="Nazwisko" maxlength="40">
+                    </div>
+                    <div class="form-group">
+                        <label  for="email">Email</label>
+                        <input type="email" class="form-control mb-3" name="email" id="email" placeholder="Email" maxlength="320">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Hasło</label>
+                        <input type="password" class="form-control mb-3" name="password" id="password" placeholder="Hasło" maxlength="50">
+                    </div>
+                    <div class="form-group">
+                        <label for="repeat_password">Powtórz hasło</label>
+                        <input type="password" class="form-control mb-3" name="repeat_password" id="repeat_password" placeholder="Hasło" maxlength="50">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" type="submit" id="create_button">Utwórz konto</button>
                     </div>
                 </form>
-                <hr>
-                <button class="btn btn-secondary" id="register_button" onclick="window.location.assign('../rejestr')">Nie masz konta utwórz je!</button>
             </div>
         </div>
     </div>
@@ -56,28 +68,31 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-	    login();
+	    rejestracja();
         });
 
-        // funkcja ajax uruchamiająca plik login.php
-        function login(){
-        $('#loginform').on('submit',function(e){
+        // funkcja ajax uruchamiająca plik rejestracja_check.php
+        function rejestracja(){
+        $('#registerform').on('submit',function(e){
             e.preventDefault();
             $.ajax({
-                url: "../scripts/login_check.php",
+                url: "../scripts/rejestracja_check.php",
                 method: 'POST',
                 data: {
                     login: $('#login').val(),
-                    password: $('#password').val()
+                    name: $('#name').val(),
+                    surname: $('#surname').val(),
+                    email: $('#email').val(),
+                    password:$('#password').val(),
+                    repeatPassword:$('#repeat_password').val()
                 }
             }).done(function( data ) {
-                if(data=="login"){
+                if(data=="register"){
                     window.location.assign('../');
-                }else if(data=="admin"){
-                    window.location.assign('../admin');
                 }else{
-                    $('#loginform').html(data);
+                    $('#registerform').html(data);
                 }
+                
             });
         });
         }
