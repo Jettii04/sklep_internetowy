@@ -213,7 +213,7 @@ require_once('../../scripts/database.php');
                 echo '
                             <div class="row">
                                 <div class="col-7">
-                                <a href="" class="btn btn-outline-light">Dodaj do koszyka</a>
+                                <a href="javascript:add_to_cart('."'".$row['item_id']."'".')" class="btn btn-outline-light">Dodaj do koszyka</a>
                                 </div>
                                 <div class="col" style="text-align: right;">';
                     
@@ -363,6 +363,19 @@ require_once('../../scripts/database.php');
                   document.getElementById(id).remove();
                 }
               });
+        }
+        function add_to_cart(item){
+            var id=item;
+            //alert(id);
+            $.ajax({
+                url: "../../scripts/add_to_cart.php",
+                method: 'POST',
+                data: {
+                    item: id
+                }
+            }).done(function( data ) {
+                alert("Dodano do koszyka!");
+            });
         }
         </script>
 </body>
