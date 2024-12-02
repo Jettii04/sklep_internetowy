@@ -266,24 +266,54 @@ require_once("../scripts/database.php");
                 $rating=0;
                 $search="";
 
-                if(isset($_GET['minPrice'])){
+                if(isset($_GET['minPrice']) && $_GET['minPrice']!=""){
                     $minPrice=$_GET['minPrice'];
                 }
-                if(isset($_GET['maxPrice'])){
+                if(isset($_GET['maxPrice']) && $_GET['maxPrice']!=""){
                     $maxPrice=$_GET['maxPrice'];
                 }
-                if(isset($_GET['rating'])){
+                if(isset($_GET['rating']) && $_GET['rating']>0){
                     $rating=$_GET['rating'];
+                    $rc=" and AVG(rating) >= ".$rating." ";
+                    $r2=" HAVING AVG(rating) >= ".$rating." ";
+                }else{
+                    $rc=" ";
+                    $r2=" ";
                 }
 
                 if(isset($_GET['search'])){
                     $search=htmlspecialchars($_GET['search']);
                 }
 
-                if(htmlspecialchars($_GET['category'])==""||!isset($_GET['category'])){
-                    $q = $pdo->query("SELECT * FROM items WHERE name like '%".$search."%' order by price ".$order);
+                if(($_GET['category'])==""||!isset($_GET['category'])){
+                    $noi = $pdo->query("SELECT COUNT(*), item_id FROM items WHERE name like '%".$search."%' and price BETWEEN ".$minPrice." and ".$maxPrice." and item_id in (SELECT items.item_id FROM items left join reviews on items.item_id = reviews.item_id GROUP by item_id ".$r2.")");
+                    $nOfitems = $noi->fetchColumn();
                 }else{
-                    $q = $pdo->query("SELECT * FROM items WHERE name like '%".$search."%' and category=".htmlspecialchars($_GET['category'])." order by price ".$order);
+                    $noi = $pdo->query("SELECT COUNT(*), item_id FROM items WHERE name like '%".$search."%' and category=".htmlspecialchars($_GET['category'])." and price BETWEEN ".$minPrice." and ".$maxPrice." and item_id in (SELECT items.item_id FROM items left join reviews on items.item_id = reviews.item_id GROUP by item_id ".$r2.")");
+                    $nOfitems = $noi->fetchColumn();
+                }
+
+
+                // ilosc wyswietlana produktow na jesdnej stronie
+                $nOnpage=3;
+
+                if($nOfitems%$nOnpage!=0){
+                    $nOfpages=floor($nOfitems/$nOnpage)+1;
+                }else{
+                    $nOfpages=floor($nOfitems/$nOnpage);
+                }
+
+                $page=1;
+                $offset=0;
+                if(isset($_GET['page'])){
+                    $page=htmlspecialchars($_GET['page']);
+                    $offset=($page-1)*$nOnpage;
+                }
+
+                if(($_GET['category'])==""||!isset($_GET['category'])){
+                    $q = $pdo->query("SELECT items.* , AVG(rating) FROM items left join reviews on items.item_id = reviews.item_id GROUP by item_id HAVING name like '%".$search."%' and price BETWEEN ".$minPrice." and ".$maxPrice.$rc." order by price ".$order." LIMIT ".$nOnpage." OFFSET ".$offset);
+                }else{
+                    $q = $pdo->query("SELECT items.* , AVG(rating) FROM items left join reviews on items.item_id = reviews.item_id GROUP by item_id HAVING name like '%".$search."%' and category=".htmlspecialchars($_GET['category'])." and price BETWEEN ".$minPrice." and ".$maxPrice.$rc." order by price ".$order." LIMIT ".$nOnpage." OFFSET ".$offset);
                 }
                 
                 }catch (PDOException $e) {
@@ -305,7 +335,7 @@ require_once("../scripts/database.php");
                     //exit();
                 }
 
-                if($row['price']<=$maxPrice && $row['price']>=$minPrice && floor($avgRating)>=$rating){
+                //if(floor($avgRating)>=$rating){
                 echo '
                 <div class="col">
                     <a href="../produkt/?item='.$row['item_id'].'" style="color: inherit; text-decoration: inherit;">
@@ -367,7 +397,22 @@ require_once("../scripts/database.php");
                     </a>
                 </div>
                 ';
+                //}
                 }
+                ?>
+            </div>
+            <div class="mt-3" style="text-align: center;">
+                <?php 
+                for($j=1;$j<=$nOfpages;$j++){
+                    if($page==$j){
+                        echo '
+                        <input type="submit" class="btn btn-dark" name="page" value="'.$j.'">
+                        ';
+                    }else{
+                        echo '
+                        <input type="submit" class="btn btn-outline-dark" name="page" value="'.$j.'">
+                        ';
+                    }
                 }
                 ?>
             </div>
