@@ -61,6 +61,16 @@ if($error==false){
     }
     $form ="register";
 
+    $data = [
+        'login' => $login
+    ];
+    try {
+    $q = $pdo->prepare("INSERT INTO carts (user) VALUES (:login)");
+    $q->execute($data);
+    }catch (PDOException $e) {
+        echo 'Nie udało się utworzyć konta';
+        //exit();
+    }
 }
 echo $form;
 ?>
