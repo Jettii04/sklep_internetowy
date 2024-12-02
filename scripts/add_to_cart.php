@@ -59,5 +59,5 @@ if($amount!="" && $amount>0){
         //exit();
     }
 }
-echo $amount;
+
 ?>

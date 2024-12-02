@@ -217,7 +217,7 @@ require_once("../scripts/database.php");
                         </div>
                         <div class="col-2 col-lg-1 mt-2 mt-lg-0">
                             <form>
-                                <input type="number" class="form-control cart-item-amount" name="amount" min="0" step="1" value="'.$item['amount'].'">
+                                <input type="number" class="form-control cart-item-amount" id="amount'.$item['item_id'].'" name="amount" min="1" step="1" value="'.$item['amount'].'" onchange="myFunction('."'".$item['item_id']."'".')">
                             </form>
                         </div>
                         <div class="col col-lg-2 mt-2 mt-lg-0">
@@ -340,7 +340,23 @@ require_once("../scripts/database.php");
                 }
             }).done(function( data ) {
                   document.getElementById(id).remove();
-              });
+            });
+        }
+        function myFunction(item) {
+            var id=item;
+            var am = document.getElementById("amount"+id).value;
+            //alert(am);
+            $.ajax({
+                url: "../scripts/change_amount_in_cart.php",
+                method: 'POST',
+                data: {
+                    item: id,
+                    amount: am
+                }
+            }).done(function( data ) {
+                //alert(data);
+                location.reload();
+            });
         }
         </script>
 </body>
