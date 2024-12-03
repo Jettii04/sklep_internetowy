@@ -57,6 +57,17 @@ if(!isset($_SESSION['login'])){
             margin-left: auto;
             margin-right:auto;
         }
+        .menu-big-link {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            background-color: white;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #8a8a8a;
+            color: black;
+        }
     </style>
 </head>
 <body>
@@ -161,7 +172,22 @@ if(!isset($_SESSION['login'])){
         </div>
         <!-- Ciało storny -->
         <div class="p-4">
-            
+            <div class="container">
+                <div class="row row-cols-2 row-cols-md-3 g-2 justify-content-center">
+                    <a href="../konto/dane/" class="col-4 menu-big-link" >
+                            <h4>Dane</h4>
+                    </a>
+                    <a href="../konto/zamowienia/" class="col-4 menu-big-link" >
+                            <h4>Zamówienia</h4>
+                    </a>
+                    <a href="../konto/ulubione/" class="col-4 menu-big-link" >
+                            <h4>Ulubione</h4>
+                    </a>
+                    <a href="javascript:logout()" class="col-4 menu-big-link" style="color:red">
+                            <h4>Wyloguj</h4>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
