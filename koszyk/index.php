@@ -183,10 +183,10 @@ require_once("../scripts/database.php");
         </div>
         <!-- Ciało storny -->
         <div class="pt-4 pb-4">
-        <div style="color: black" class="ps-4 pe-4">
-        <h2>Koszyk</h2>    
-        <hr>
-        </div>
+            <div style="color: black" class="ps-4 pe-4">
+            <h2>Koszyk</h2>    
+            <hr>
+            </div>
                 <?php 
                 if(isset($_SESSION['login'])){
                     $data = [
@@ -257,6 +257,103 @@ require_once("../scripts/database.php");
                     <h4 >Łącznie '.$wholeprice.' zł</h4>
                 </div>';
                 ?>
+            <form>
+            <div class="container-md cart-item mb-2">
+                <div class="container mt-5 mb-2">
+                    <h2 class="mb-4">Wybierz metodę dostawy</h2>
+                    <div class="row g-3">
+
+                        <div class="col-md-4">
+                            <label for="delivery1" class="card">
+                                <div class="card-body">
+                                    <input class="form-check-input" type="radio" name="delivery" id="delivery1" value="1">
+                                        <div class="form-check">
+                                            Paczkomat
+                                        </div>
+                                </div>
+                            </label>
+                        </div>
+                
+                        <div class="col-md-4">
+                            <label for="delivery2" class="card">
+                                <div class="card-body">
+                                    <input class="form-check-input me-2" type="radio" name="delivery" id="delivery2" value="2">
+                                        <div class="form-check">
+                                            Kurier
+                                        </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="delivery3" class="card">
+                                <div class="card-body">
+                                    <input class="form-check-input" type="radio" name="delivery" id="delivery3" value="3">
+                                        <div class="form-check">
+                                            Odbiór osobisty
+                                        </div>
+                                </div>
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-md cart-item mb-2">
+                <div class="container mt-5 mb-2">
+                    <h2 class="mb-4">Wybierz metodę dostawy</h2>
+                    <div class="row g-3">
+
+                        <div class="col-md-4">
+                            <label for="p1" class="card">
+                                <div class="card-body">
+                                    <input class="form-check-input" type="radio" name="p" id="p1" value="1">
+                                        <div class="form-check">
+                                            Płatność pzelewem
+                                        </div>
+                                </div>
+                            </label>
+                        </div>
+                
+                        <div class="col-md-4">
+                            <label for="p2" class="card">
+                                <div class="card-body">
+                                    <input class="form-check-input me-2" type="radio" name="p" id="p2" value="2">
+                                        <div class="form-check">
+                                            Płatność BLIK
+                                        </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="p3" class="card">
+                                <div class="card-body">
+                                    <input class="form-check-input" type="radio" name="p" id="p3" value="3">
+                                        <div class="form-check">
+                                            Płatność przy odbiorze
+                                        </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="p4" class="card">
+                                <div class="card-body">
+                                    <input class="form-check-input" type="radio" name="p" id="p4" value="3">
+                                        <div class="form-check">
+                                            test
+                                        </div>
+                                </div>
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            </form>
         </div>
     </div>
 </div>
