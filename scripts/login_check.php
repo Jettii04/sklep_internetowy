@@ -10,21 +10,30 @@ $q->bindValue(':password',sha1(htmlspecialchars($_POST['password'])), PDO::PARAM
 $q->execute();
 $login = $q->fetchColumn();
 
+$admins = $pdo->prepare("SELECT login FROM admins WHERE login = :login and password= :password");
+$admins->bindValue(':login',htmlspecialchars($_POST['login']), PDO::PARAM_STR);
+$admins->bindValue(':password',sha1(htmlspecialchars($_POST['password'])), PDO::PARAM_STR);
+$admins->execute();
+$adminLogin = $admins->fetchColumn();
+
+$employees = $pdo->prepare("SELECT login FROM employees WHERE login = :login and password= :password");
+$employees->bindValue(':login',htmlspecialchars($_POST['login']), PDO::PARAM_STR);
+$employees->bindValue(':password',sha1(htmlspecialchars($_POST['password'])), PDO::PARAM_STR);
+$employees->execute();
+$employeeLogin = $employees->fetchColumn();
+
 //echo htmlspecialchars($_POST['login']);
 
-if(htmlspecialchars($_POST['login'])==$login && htmlspecialchars($_POST['login'])!=''){
+if((htmlspecialchars($_POST['login'])==$login || htmlspecialchars($_POST['login'])==$adminLogin || htmlspecialchars($_POST['login'])==$employeeLogin) && htmlspecialchars($_POST['login'])!=''){
     session_start();
-    $q = $pdo->prepare("SELECT admin FROM users WHERE login = :login");
-    $q->bindValue(':login',htmlspecialchars($_POST['login']), PDO::PARAM_STR);
-    $q->execute();
-    $admin = $q->fetchColumn(); 
-    $_SESSION['login']=$login;
-    $_SESSION['admin']=$admin;
-    if($admin==1){
+    if($adminLogin!="" || $employeeLogin!=""){
         $form='admin';
+        $_SESSION['admin']=1;
     }else{
         $form='login';
+        $_SESSION['admin']=0;
     }
+    $_SESSION['login']=$login;
    
 }else{
     $form ='
