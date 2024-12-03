@@ -183,16 +183,33 @@ require_once("../scripts/database.php");
         </div>
         <!-- Ciało storny -->
         <div class="pt-4 pb-4">
+        <div style="color: black" class="ps-4 pe-4">
+        <h2>Koszyk</h2>    
+        <hr>
+        </div>
                 <?php 
-                $data = [
-                    'user' => $_SESSION['login'],
-                ];
-                try {
-                $q = $pdo->prepare("SELECT name, items.item_id, items.price, items.main_img, cart_items.amount FROM items JOIN cart_items on items.item_id = cart_items.item_id left JOIN carts on carts.cart_id = cart_items.cart_id WHERE user=:user");
-                $q->execute($data);
-                }catch (PDOException $e) {
-                    echo 'Nie udało się odczytać danych z bazy';
-                    //exit();
+                if(isset($_SESSION['login'])){
+                    $data = [
+                        'user' => $_SESSION['login'],
+                    ];
+                    try {
+                        $q = $pdo->prepare("SELECT name, items.item_id, items.price, items.main_img, cart_items.amount FROM items JOIN cart_items on items.item_id = cart_items.item_id left JOIN carts on carts.cart_id = cart_items.cart_id WHERE user=:user");
+                        $q->execute($data);
+                    }catch (PDOException $e) {
+                        echo 'Nie udało się odczytać danych z bazy';
+                        //exit();
+                    }
+                }else{
+                    // $data = [
+                    //     'user' => $_COOKIE,
+                    // ];
+                    // try {
+                    //     $q = $pdo->prepare("SELECT name, items.item_id, items.price, items.main_img, cart_items.amount FROM items JOIN cart_items on items.item_id = cart_items.item_id WHERE cart_id=:cart");
+                    //     $q->execute($data);
+                    // }catch (PDOException $e) {
+                    //     echo 'Nie udało się odczytać danych z bazy';
+                    //     //exit();
+                    // }
                 }
 
                 $wholeprice=0;
@@ -235,8 +252,9 @@ require_once("../scripts/database.php");
                 </div>
                 </div>';
                 }
-                echo '<div class="container-md">
-                
+                echo '<div class="container-md" style="text-align: right; color: black">
+                    <hr style=" border: 3px solid black;">
+                    <h4 >Łącznie '.$wholeprice.' zł</h4>
                 </div>';
                 ?>
         </div>
@@ -340,6 +358,7 @@ require_once("../scripts/database.php");
                 }
             }).done(function( data ) {
                   document.getElementById(id).remove();
+                  location.reload();
             });
         }
         function myFunction(item) {
