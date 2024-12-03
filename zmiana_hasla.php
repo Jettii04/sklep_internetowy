@@ -49,15 +49,14 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-	    login();
+	    email();
         });
 
-        // funkcja ajax uruchamiająca plik login.php
-        function login(){
+        function email(){
         $('#form').on('submit',function(e){
             e.preventDefault();
             $.ajax({
-                url: "scripts/email_check.php",
+                url: "scripts/send_email.php",
                 method: 'POST',
                 data: {
                     email: $('#email').val(),
