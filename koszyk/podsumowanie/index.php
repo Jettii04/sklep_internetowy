@@ -54,6 +54,13 @@ session_start();
             margin-left: auto;
             margin-right:auto;
         }
+        .cart-item {
+            background-color: white;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #8a8a8a;
+            color: black;
+        }
     </style>
 </head>
 <body>
@@ -158,7 +165,34 @@ session_start();
         </div>
         <!-- Ciało storny -->
         <div class="p-4">
-            
+            <div class="container-md cart-item mb-2">
+            <div class="container summary-container">
+        <h2 class="text-center mb-4">Podsumowanie Koszyka</h2>
+
+        <!-- Dane klienta -->
+        <div id="customer-details">
+            <h4>Dane Klienta</h4>
+            <p><strong>Imię:</strong> <span id="customer-name">Jan</span></p>
+            <p><strong>Nazwisko:</strong> <span id="customer-surname">Kowalski</span></p>
+            <p><strong>Kraj:</strong> <span id="customer-country">Polska</span></p>
+            <p><strong>Email:</strong> <span id="customer-email">jan.kowalski@example.com</span></p>
+            <p><strong>Kod pocztowy:</strong> <span id="customer-code">08-110</span></p>
+            <p><strong>Nr domu:</strong> <span id="customer-address">5/2</span></p>
+            <p><strong>Miasto:</strong> <span id="customer-address">Siedlce</span></p>
+        </div>
+
+        <!-- Łączna cena koszyka -->
+        <div id="cart-summary">
+            <h4 class="text-center">Łączna cena</h4>
+            <p class="total-price text-center">300 zł</p>
+        </div>
+
+        <!-- Przycisk przejścia do płatności -->
+        <div class="text-center mt-2 mb-2">
+            <a href="../../" class="btn btn-success btn-lg">Przejdź do płatności</a>
+        </div>
+    </div>
+            </div>
         </div>
     </div>
 </div>

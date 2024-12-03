@@ -54,6 +54,13 @@ session_start();
             margin-left: auto;
             margin-right:auto;
         }
+        .cart-item {
+            background-color: white;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #8a8a8a;
+            color: black;
+        }
     </style>
 </head>
 <body>
@@ -158,7 +165,59 @@ session_start();
         </div>
         <!-- Ciało storny -->
         <div class="p-4">
-            
+            <div class="container-md cart-item mb-2">
+            <h2 class="mb-4">Dane do zamówienia</h2>
+        <form>
+            <div class="row g-3">
+                <!-- Imię -->
+                <div class="col-md-6">
+                    <label for="firstName" class="form-label">Imię</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Podaj imię" required>
+                </div>
+                <!-- Nazwisko -->
+                <div class="col-md-6">
+                    <label for="lastName" class="form-label">Nazwisko</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Podaj nazwisko" required>
+                </div>
+                <!-- Kraj -->
+                <div class="col-md-6">
+                    <label for="country" class="form-label">Kraj</label>
+                    <select class="form-select" id="country" name="country" required>
+                        <option value="">Wybierz kraj...</option>
+                        <option value="PL">Polska</option>
+                        <option value="DE">Niemcy</option>
+                        <option value="FR">Francja</option>
+                        <option value="US">Stany Zjednoczone</option>
+                    </select>
+                </div>
+                <!-- Nr telefonu -->
+                <div class="col-md-6">
+                    <label for="phone" class="form-label">Numer telefonu</label>
+                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="Podaj numer telefonu" required>
+                </div>
+                <!-- Email -->
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Podaj email" required>
+                </div>
+                <!-- Kod pocztowy -->
+                <div class="col-md-6">
+                    <label for="postalCode" class="form-label">Kod pocztowy</label>
+                    <input type="text" class="form-control" id="postalCode" name="postalCode" placeholder="00-000" pattern="\d{2}-\d{3}" required>
+                </div>
+                <!-- Numer domu -->
+                <div class="col-md-6">
+                    <label for="houseNumber" class="form-label">Numer domu</label>
+                    <input type="text" class="form-control" id="houseNumber" name="houseNumber" placeholder="Podaj numer domu" required>
+                </div>
+                <!-- Miejscowość -->
+                <div class="col-md-6">
+                    <label for="city" class="form-label">Miejscowość</label>
+                    <input type="text" class="form-control" id="city" name="city" placeholder="Podaj miejscowość" required>
+                </div>
+            </div>
+        </form>
+            </div>
         </div>
     </div>
 </div>
