@@ -66,7 +66,9 @@ if(!isset($_SESSION['login'])){
             border-style: solid;
             border-width: 1px;
             border-color: #8a8a8a;
-            color: black;
+        }
+        a {
+            text-decoration: none;
         }
     </style>
 </head>
@@ -173,18 +175,26 @@ if(!isset($_SESSION['login'])){
         <!-- Ciało storny -->
         <div class="p-4">
             <div class="container">
-                <div class="row row-cols-2 row-cols-md-3 g-2 justify-content-center">
-                    <a href="../konto/dane/" class="col-4 menu-big-link" >
+                <div class="row g-2 justify-content-center">
+                    <a href="../konto/dane/" class="col-12 col-md-4">
+                        <div class="menu-big-link" style="color: black;">
                             <h4>Dane</h4>
+                        </div>
                     </a>
-                    <a href="../konto/zamowienia/" class="col-4 menu-big-link" >
+                    <a href="../konto/zamowienia/" class="col-12 col-md-4" >
+                        <div class="menu-big-link" style="color: black;">
                             <h4>Zamówienia</h4>
+                        </div>
                     </a>
-                    <a href="../konto/ulubione/" class="col-4 menu-big-link" >
+                    <a href="../konto/ulubione/" class="col-12 col-md-4" >
+                        <div class="menu-big-link" style="color: black;">
                             <h4>Ulubione</h4>
+                        </div>
                     </a>
-                    <a href="javascript:logout()" class="col-4 menu-big-link" style="color:red">
+                    <a href="javascript:logout()" class="col-12 col-md-4" style="color:red">
+                        <div class="menu-big-link" style="color: red;">
                             <h4>Wyloguj</h4>
+                        </div>
                     </a>
                 </div>
             </div>
