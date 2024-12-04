@@ -3,6 +3,7 @@ session_start();
 require_once('../../scripts/database.php');
 $_SESSION['Femail']=htmlspecialchars($_POST['email']);
 $_SESSION['Fphone']=htmlspecialchars($_POST['phone']);
+echo $_SESSION['Femail'];
 if($_POST['addressCheckbox']!=1){
     $_SESSION['Fname']=htmlspecialchars($_POST['firstName']);
     $_SESSION['Fsurname']=htmlspecialchars($_POST['lastName']);
@@ -18,7 +19,6 @@ if($_POST['addressCheckbox']!=1){
     $_SESSION['Froad']=htmlspecialchars($_POST['otherroad']);
     $_SESSION['Fhouse_number']=htmlspecialchars($_POST['otherhouseNumber']);
 }
-echo $_SESSION['Fname'];
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -190,20 +190,63 @@ echo $_SESSION['Fname'];
             <div class="container-md cart-item mb-2">
             <div class="container summary-container">
                 <!-- Dane klienta -->
-                <div id="customer-details">
-                    <h4>Dane Klienta</h4>
-                    <p><strong>Imię:</strong> <span id="customer-name">Jan</span></p>
-                    <p><strong>Nazwisko:</strong> <span id="customer-surname">Kowalski</span></p>
-                    <p><strong>Email:</strong> <span id="customer-email">jan.kowalski@example.com</span></p>
-                    <p><strong>Kod pocztowy:</strong> <span id="customer-code">08-110</span></p>
-                    <p><strong>Nr domu:</strong> <span id="customer-address">5/2</span></p>
-                    <p><strong>Miasto:</strong> <span id="customer-address">Siedlce</span></p>
-                </div>
+
+                <?php 
+
+                $data = [
+                    'method' => $_COOKIE['delivery_method'],
+                ];
+                try {
+                    $deliv = $pdo->prepare("SELECT name FROM delivery_method WHERE delivery_id=:method");
+                    $deliv->execute($data);
+                    $delivery = $deliv ->fetchColumn();
+                }catch (PDOException $e) {
+                    echo 'Nie udało się odczytać danych z bazy';
+                    //exit();
+                }
+
+                $data = [
+                    'method' => $_COOKIE['payment_method'],
+                ];
+                try {
+                    $pay = $pdo->prepare("SELECT name FROM payment_methods WHERE payment_id=:method");
+                    $pay->execute($data);
+                    $payment = $pay ->fetchColumn();
+                }catch (PDOException $e) {
+                    echo 'Nie udało się odczytać danych z bazy';
+                    //exit();
+                }
+
+
+                echo '
+                     <div class="row m-2 mt-3">
+                        <div class="col-3">
+                        <h5>Dane</h5>
+                        <p>ul.'.$_SESSION['Fname'].' '.$_SESSION['Fsurname'].'</p>
+                        <p>'.$_SESSION['Femail'].'</p>
+                        <p>'.$_SESSION['Fphone'].'</p>
+                        </div>
+                        <div class="col-3">
+                        <h5>Płatność</h5>
+                        '.$payment.'
+                        </div>
+                        <div class="col-3">
+                        <h5>Dostawa</h5>
+                        '.$delivery.'
+                        </div>
+                        <div class="col-3">
+                        <h5>Adres dostawy</h5>
+                        <p>ul.'.$_SESSION['Froad'].' '.$_SESSION['Fhouse_number'].'</p>
+                        <p>'.$_SESSION['Fpostal_code'].' '.$_SESSION['Fcity'].'</p>
+                        </div>
+                    </div>
+                ';
+                ?>
 
                 <!-- Łączna cena koszyka -->
                 <div id="cart-summary">
                     <h4 class="text-center">Łączna cena</h4>
-                    <p class="total-price text-center"><?php echo $_SESSION['whole_price'];?></p>
+                    <p class="total-price text-center"><?php echo $_SESSION['whole_price'];?> zł</p>
                 </div>
 
                 <!-- Przycisk przejścia do płatności -->

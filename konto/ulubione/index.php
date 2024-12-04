@@ -157,21 +157,6 @@ require_once('../../scripts/database.php');
 <div class="container-fluid p-0 d-flex h-100">
 
     <div class="bg-light flex-fill">
-        <!-- Sidebar po zmniejszeniu -->
-        <div class="p-2 d-md-none d-flex text-white bg-dark">
-            <div class="nav-item mb-1">
-                <a href="" class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#settings" aria-expanded="false" aria-controls="settings">
-                    <span class="topic">Settings </span>
-                </a>
-                <ul id="settings" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                    <li class="sidebar-item">
-                        <a href="" class="nav-link">
-                            <span class=""> Login</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
         <!-- Ciało storny -->
         <div class="p-4">
         <div style="color: black">
