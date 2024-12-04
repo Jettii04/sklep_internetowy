@@ -12,6 +12,21 @@ if((!isset($_SESSION['admin']) || (isset($_SESSION['admin'])&&$_SESSION['admin']
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="your-project-dir/icon-font/lineicons.css" rel="stylesheet" >
     <link href="https://cdn.lineicons.com/5.0/lineicons.css" rel="stylesheet" >
+    <style>
+      .menu-big-link {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            background-color: white;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #8a8a8a;
+        }
+        a {
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
 <!-- navbar -->
@@ -46,36 +61,46 @@ if((!isset($_SESSION['admin']) || (isset($_SESSION['admin'])&&$_SESSION['admin']
 </nav>
 
 <div class="container-fluid p-0 d-flex h-100">
-  <!-- Sidebar -->
-  <div id="bdSidebar" class="d-flex flex-column flex-shrink-0 p-3 bg-dark text-white offcanvas-md offcanvas-start">
-      <ul class="mynav nav nav-pills flex-column mb-auto">
-          <li class="nav-item mb-1">
-              <a href="" class="nav-link">
-                  Dodaj Podstronę
-              </a>
-          </li>
-      </ul>
-      <hr>
-      <div class="d-flex">
-          <span>
-              <h6 class="mt-1 mb-0">
-                      
-                  </h6>
-          </span>
-      </div>
-  </div>
 
   <div class="bg-light flex-fill">
-      <!-- Sidebar po zmniejszeniu -->
-      <div class="p-2 d-md-none d-flex text-white bg-dark">
-          <a href="#" class="text-white" data-bs-toggle="offcanvas" data-bs-target="#bdSidebar">
-              <i class="fa-solid fa-bars"></i>
-          </a>
-          <span class="ms-3">TEST</span>
-      </div>
       <!-- Ciało storny -->
       <div class="p-4">
           
+            <div class="container">
+                <div class="row g-2 justify-content-center">
+                    <a href="klienci" class="col-12 col-md-4">
+                        <div class="menu-big-link" style="color: black;">
+                            <h4>Klienci</h4>
+                        </div>
+                    </a>
+                    <a href="zamowienia/" class="col-12 col-md-4" >
+                        <div class="menu-big-link" style="color: black;">
+                            <h4>Zamówienia</h4>
+                        </div>
+                    </a>
+                    <a href="produkty/" class="col-12 col-md-4" >
+                        <div class="menu-big-link" style="color: black;">
+                            <h4>Produkty</h4>
+                        </div>
+                    </a>
+                    <a href="podstrony/" class="col-12 col-md-4" >
+                        <div class="menu-big-link" style="color: black;">
+                            <h4>Podstrony</h4>
+                        </div>
+                    </a>
+                    <a href="pracownicy/" class="col-12 col-md-4" >
+                        <div class="menu-big-link" style="color: black;">
+                            <h4>Podstrony</h4>
+                        </div>
+                    </a>
+                    <a href="javascript:logout()" class="col-12 col-md-4" style="color:red">
+                        <div class="menu-big-link" style="color: red;">
+                            <h4>Wyloguj</h4>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
       </div>
   </div>
 </div>
@@ -88,10 +113,10 @@ if((!isset($_SESSION['admin']) || (isset($_SESSION['admin'])&&$_SESSION['admin']
           <h5 class="mb-3" style="letter-spacing: 2px; color: #7f4722;">sklep</h5>
           <ul class="list-unstyled mb-0">
             <li class="mb-1">
-              <a href="" style="color: #4f4f4f;">strona główna</a>
+              <a href="../" style="color: #4f4f4f;">strona główna</a>
             </li>
             <li class="mb-1">
-              <a href="" style="color: #4f4f4f;">katalog</a>
+              <a href="../katalog/" style="color: #4f4f4f;">katalog</a>
             </li>
           </ul>
         </div>
@@ -118,23 +143,29 @@ if((!isset($_SESSION['admin']) || (isset($_SESSION['admin'])&&$_SESSION['admin']
           <h5 class="mb-3" style="letter-spacing: 2px; color: #7f4722;">konto</h5>
           <ul class="list-unstyled mb-0">
             <li class="mb-1">
-              <a href="" style="color: #4f4f4f;">zamówienia</a>
+              <a href="../konto/" style="color: #4f4f4f;">konto</a>
             </li>
             <li class="mb-1">
-              <a href="" style="color: #4f4f4f;">koszyk</a>
+              <a href="../konto/ulubione/" style="color: #4f4f4f;">ulubione</a>
             </li>
             <li class="mb-1">
-              <a href="" style="color: #4f4f4f;">dane</a>
+              <a href="../konto/zamowienia" style="color: #4f4f4f;">zamówienia</a>
+            </li>
+            <li class="mb-1">
+              <a href="../koszyk/" style="color: #4f4f4f;">koszyk</a>
+            </li>
+            <li class="mb-1">
+              <a href="../konto/dane/" style="color: #4f4f4f;">dane</a>
             </li>
           </ul>
         </div>
       </div>
     </div>
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);color: black;">
       © 2024 Mikołaj Chalimoniuk Grzegorz Komar:
       <a class="text-dark" href="https://github.com/Jettii04/sklep_internetowy">github.com</a>
     </div>
-  </footer>
+</footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
