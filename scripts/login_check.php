@@ -53,7 +53,7 @@ if((htmlspecialchars($_POST['login'])==$login || htmlspecialchars($_POST['login'
         <div class="invalid-feedback mb-2" style="font-size:15px">
         Nieprawidłowe hasło lub login!
         </div>
-        <a href="zmiana_hasla.php">Nie pamiętasz hasła?</a>
+        <a href="../zmiana_hasla/">Nie pamiętasz hasła?</a>
     </div>
     <div class="form-group">
     <button type="submit" class="btn btn-primary mt-2" id="login_button">Zaloguj się</button>

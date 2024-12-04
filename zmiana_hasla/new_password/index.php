@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Login</title>
+
     <style>
         label {
             font-weight: bold;
@@ -28,24 +28,21 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="p-4 col-12 col-md-6 col-lg-4 text-center okno rounded-3">
-                <h2>Logowanie</h2>
+                <h2>Zmiana hasła</h2>
                 <br>
-                <form id="loginform">
+                <form id="form" method="post" action="">
                     <div class="form-group">
-                        <label  for="login">Login</label>
-                        <input type="text" class="form-control mb-3" name="login" id="login" placeholder="Login" maxlength="30">
+                        <label  for="new_pass">Nowe Hasło</label>
+                        <input type="password" class="form-control mb-3" name="new_pass" id="new_pass" placeholder="Nowe hasło" maxlength="32" required>
+                    </div> 
+                    <div class="form-group">
+                        <label  for="repeat_pass">Powtórz Hasło</label>
+                        <input type="password" class="form-control mb-3" name="repeat_pass" id="repeat_pass" placeholder="Powtórz hasło" maxlength="32" required>
                     </div>
                     <div class="form-group">
-                        <label for="password">Hasło</label>
-                        <input type="password" class="form-control mb-1" name="password" id="password" placeholder="Hasło" maxlength="50">
-                        <a href="../zmiana_hasla/">Nie pamiętasz hasła?</a>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary mt-3" id="login_button">Zaloguj się</button>
+                        <button type="submit" class="btn btn-primary" id="send_button">Zmień</button>
                     </div>
                 </form>
-                <hr>
-                <button class="btn btn-secondary" id="register_button" onclick="window.location.assign('../rejestr')">Nie masz konta utwórz je!</button>
             </div>
         </div>
     </div>
@@ -56,27 +53,25 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-	    login();
+	     newPass();
         });
 
-        // funkcja ajax uruchamiająca plik login.php
-        function login(){
-        $('#loginform').on('submit',function(e){
+        function newPass(){
+        $('#form').on('submit',function(e){
             e.preventDefault();
             $.ajax({
-                url: "../scripts/login_check.php",
+                url: "../../scripts/change_password.php",
                 method: 'POST',
                 data: {
-                    login: $('#login').val(),
-                    password: $('#password').val()
+                    new_pass: $('#new_pass').val(),
+                    repeat_pass: $('#repeat_pass').val(),
                 }
             }).done(function( data ) {
-                if(data=="login"){
-                    window.location.assign('../');
-                }else if(data=="admin"){
-                    window.location.assign('../admin');
+                if(data=='changed'){
+                    alert('Zmieniono hasło')
+                    window.location.assign('../../login/');
                 }else{
-                    $('#loginform').html(data);
+                    $('#form').html(data);
                 }
             });
         });

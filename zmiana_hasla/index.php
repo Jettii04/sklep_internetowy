@@ -56,13 +56,17 @@
         $('#form').on('submit',function(e){
             e.preventDefault();
             $.ajax({
-                url: "scripts/send_email.php",
+                url: "../scripts/send_email.php",
                 method: 'POST',
                 data: {
                     email: $('#email').val(),
                 }
             }).done(function( data ) {
+                if(data=='sent'){
+                    window.location.assign('confirm/');
+                }else{
                     $('#form').html(data);
+                }
             });
         });
         }
