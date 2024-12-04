@@ -80,27 +80,35 @@ session_start();
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="">O nas</a>
-                </li>
                 <?php 
                 if(isset($_SESSION['login'])){
                     echo'
-                        <li class="nav-item dropdown me-2 d-none d-md-block">
-                        <a class="nav-link" href="../konto/ulubione">
+                        <li class="nav-item dropdown me-2">
+                        <a class="nav-link" href="../../konto/ulubione">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M11.8227 4.77124L12 4.94862L12.1773 4.77135C14.4244 2.52427 18.0676 2.52427 20.3147 4.77134C22.5618 7.01842 22.5618 10.6616 20.3147 12.9087L13.591 19.6324C12.7123 20.5111 11.2877 20.5111 10.409 19.6324L3.6853 12.9086C1.43823 10.6615 1.43823 7.01831 3.6853 4.77124C5.93237 2.52417 9.5756 2.52417 11.8227 4.77124ZM10.762 5.8319C9.10073 4.17062 6.40725 4.17062 4.74596 5.8319C3.08468 7.49319 3.08468 10.1867 4.74596 11.848L11.4697 18.5718C11.7625 18.8647 12.2374 18.8647 12.5303 18.5718L19.254 11.8481C20.9153 10.1868 20.9153 7.49329 19.254 5.83201C17.5927 4.17072 14.8993 4.17072 13.238 5.83201L12.5304 6.53961C12.3897 6.68026 12.199 6.75928 12 6.75928C11.8011 6.75928 11.6104 6.68026 11.4697 6.53961L10.762 5.8319Z" fill="#ffffff"/>
                             </svg>
                         </a>
                         </li>
-                        <li class="nav-item dropdown me-2 d-none d-md-block">
-                        <a class="nav-link" href="../koszyk/">
+                        <li class="nav-item dropdown me-2">
+                        <a class="nav-link" href="../../koszyk/">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M2.31641 3.25C1.90219 3.25 1.56641 3.58579 1.56641 4C1.56641 4.41421 1.90219 4.75 2.31641 4.75H3.49696C3.87082 4.75 4.18759 5.02534 4.23965 5.39556L5.49371 14.3133C5.6499 15.424 6.60021 16.25 7.72179 16.25L18.0664 16.25C18.4806 16.25 18.8164 15.9142 18.8164 15.5C18.8164 15.0858 18.4806 14.75 18.0664 14.75L7.72179 14.75C7.34793 14.75 7.03116 14.4747 6.9791 14.1044L6.85901 13.2505H17.7114C18.6969 13.2505 19.5678 12.6091 19.8601 11.668L21.7824 5.48032C21.8531 5.25268 21.8114 5.00499 21.6701 4.81305C21.5287 4.62112 21.3045 4.50781 21.0662 4.50781H5.51677C5.14728 3.75572 4.37455 3.25 3.49696 3.25H2.31641ZM5.84051 6.00781L6.64807 11.7505H17.7114C18.0399 11.7505 18.3302 11.5367 18.4277 11.223L20.0478 6.00781H5.84051Z" fill="#ffffff"/>
                             <path d="M7.78418 17.75C6.81768 17.75 6.03418 18.5335 6.03418 19.5C6.03418 20.4665 6.81768 21.25 7.78418 21.25C8.75068 21.25 9.53428 20.4665 9.53428 19.5C9.53428 18.5335 8.75068 17.75 7.78418 17.75Z" fill="#ffffff"/>
                             <path d="M14.5703 19.5C14.5703 18.5335 15.3538 17.75 16.3203 17.75C17.2868 17.75 18.0704 18.5335 18.0704 19.5C18.0704 20.4665 17.2869 21.25 16.3204 21.25C15.3539 21.25 14.5703 20.4665 14.5703 19.5Z" fill="#ffffff"/>
                             </svg>
                         </a>
+                        </li>
+                        <li class="nav-item d-block d-md-none">
+                            <a class="nav-link" href="../../konto">Konto</a>
+                        </li>
+                        <li class="nav-item d-block d-md-none">
+                            <a class="nav-link" href="../../konto/zamowienia">Zamówienia</a>
+                        </li>
+                        <li class="nav-item d-block d-md-none">
+                            <a class="nav-link" href="javascript:logout('.')">
+                                <button class="btn btn btn-outline-secondary"  type="button">Wyloguj</button>
+                            </a>
                         </li>
                         <li class="nav-item dropdown d-none d-md-block">
                             <button class="btn btn-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -110,14 +118,18 @@ session_start();
                                 </svg>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="javascript:logout('.')">Wyloguj</a></li>
+                                <li><a class="dropdown-item" href="../../konto">Konto</a></li>
+                                <li><a class="dropdown-item" href="../../konto/zamowienia">Zamówienia</a></li>
+                                <li><a class="" href="javascript:logout('.')">
+                                <button class="btn btn btn-outline-secondary ms-2"  type="button">Wyloguj</button>
+                                </a></li>
                             </ul>
                         </li>
                         ';
                 }else{
                     echo  '
-                        <li class="nav-item dropdown me-2 d-none d-md-block">
-                        <a class="nav-link" href="../koszyk/">
+                        <li class="nav-item dropdown me-2">
+                        <a class="nav-link" href="../../koszyk/">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M2.31641 3.25C1.90219 3.25 1.56641 3.58579 1.56641 4C1.56641 4.41421 1.90219 4.75 2.31641 4.75H3.49696C3.87082 4.75 4.18759 5.02534 4.23965 5.39556L5.49371 14.3133C5.6499 15.424 6.60021 16.25 7.72179 16.25L18.0664 16.25C18.4806 16.25 18.8164 15.9142 18.8164 15.5C18.8164 15.0858 18.4806 14.75 18.0664 14.75L7.72179 14.75C7.34793 14.75 7.03116 14.4747 6.9791 14.1044L6.85901 13.2505H17.7114C18.6969 13.2505 19.5678 12.6091 19.8601 11.668L21.7824 5.48032C21.8531 5.25268 21.8114 5.00499 21.6701 4.81305C21.5287 4.62112 21.3045 4.50781 21.0662 4.50781H5.51677C5.14728 3.75572 4.37455 3.25 3.49696 3.25H2.31641ZM5.84051 6.00781L6.64807 11.7505H17.7114C18.0399 11.7505 18.3302 11.5367 18.4277 11.223L20.0478 6.00781H5.84051Z" fill="#ffffff"/>
                             <path d="M7.78418 17.75C6.81768 17.75 6.03418 18.5335 6.03418 19.5C6.03418 20.4665 6.81768 21.25 7.78418 21.25C8.75068 21.25 9.53428 20.4665 9.53428 19.5C9.53428 18.5335 8.75068 17.75 7.78418 17.75Z" fill="#ffffff"/>
@@ -144,80 +156,122 @@ session_start();
         </div>
     </div>
 </nav>
+</form>
 
 <div class="container-fluid p-0 d-flex h-100">
 
     <div class="bg-light flex-fill">
-        <!-- Sidebar po zmniejszeniu -->
-        <div class="p-2 d-md-none d-flex text-white bg-dark">
-            <div class="nav-item mb-1">
-                <a href="" class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#settings" aria-expanded="false" aria-controls="settings">
-                    <span class="topic">Settings </span>
-                </a>
-                <ul id="settings" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                    <li class="sidebar-item">
-                        <a href="" class="nav-link">
-                            <span class=""> Login</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
         <!-- Ciało storny -->
         <div class="p-4">
+        <div style="color: black">
+        <h2>Dane do zamówienia</h2>    
+        <hr>
+        </div>
             <div class="container-md cart-item mb-2">
-            <h2 class="mb-4">Dane do zamówienia</h2>
-        <form>
-            <div class="row g-3">
-                <!-- Imię -->
-                <div class="col-md-6">
-                    <label for="firstName" class="form-label">Imię</label>
-                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Podaj imię" required>
+            <form>
+                <div class="row">
+                <div class="col-12 col-md-6">
+                    <div class="row g-3 m-2">
+                        <!-- Imię -->
+                        <div class="col-md-6">
+                            <label for="firstName" class="form-label">Imię</label>
+                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Podaj imię" required>
+                        </div>
+                        <!-- Nazwisko -->
+                        <div class="col-md-6">
+                            <label for="lastName" class="form-label">Nazwisko</label>
+                            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Podaj nazwisko" required>
+                        </div>
+                        <!-- Nr telefonu -->
+                        <div class="col-md-6">
+                            <label for="phone" class="form-label">Numer telefonu</label>
+                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="Podaj numer telefonu" required>
+                        </div>
+                        <!-- Email -->
+                        <div class="col-md-6">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Podaj email" required>
+                        </div>
+                        <!-- Ulica -->
+                        <div class="col-md-6">
+                            <label for="road" class="form-label">Numer domu</label>
+                            <input type="text" class="form-control" id="road" name="road" placeholder="Podaj numer domu" required>
+                        </div>
+                        <!-- Numer domu -->
+                        <div class="col-md-6">
+                            <label for="houseNumber" class="form-label">Numer domu</label>
+                            <input type="text" class="form-control" id="houseNumber" name="houseNumber" placeholder="Podaj numer domu" required>
+                        </div>
+                        <!-- Kod pocztowy -->
+                        <div class="col-md-6">
+                            <label for="postalCode" class="form-label">Kod pocztowy</label>
+                            <input type="text" class="form-control" id="postalCode" name="postalCode" placeholder="00-000" pattern="\d{2}-\d{3}" required>
+                        </div>
+                        <!-- Miejscowość -->
+                        <div class="col-md-6">
+                            <label for="city" class="form-label">Miejscowość</label>
+                            <input type="text" class="form-control" id="city" name="city" placeholder="Podaj miejscowość" required>
+                        </div>
+                    </div>
                 </div>
-                <!-- Nazwisko -->
-                <div class="col-md-6">
-                    <label for="lastName" class="form-label">Nazwisko</label>
-                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Podaj nazwisko" required>
+                <div class="col-12 col-md-6">
+                    <div class="mt-3" style="text-align: center;">
+                        <input type="checkbox" id="addressCheckbox" name="addressCheckbox" value="0" onchange="addres();">
+                        <label for="addressCheckbox"> Inny adres dostawy</label><br>
+                    </div>
+                    <div class="row g-3 m-2">
+                        <!-- Imię -->
+                        <div class="col-md-6">
+                            <label for="otherfirstName" class="form-label">Imię</label>
+                            <input type="text" class="form-control" id="otherfirstName" name="otherfirstName" placeholder="Podaj imię" required>
+                        </div>
+                        <!-- Nazwisko -->
+                        <div class="col-md-6">
+                            <label for="otherlastName" class="form-label">Nazwisko</label>
+                            <input type="text" class="form-control" id="otherlastName" name="otherlastName" placeholder="Podaj nazwisko" required>
+                        </div>
+                        <!-- Nr telefonu -->
+                        <div class="col-md-6">
+                            <label for="otherphone" class="form-label">Numer telefonu</label>
+                            <input type="tel" class="form-control" id="otherphone" name="otherphone" placeholder="Podaj numer telefonu" required>
+                        </div>
+                        <!-- Email -->
+                        <div class="col-md-6">
+                            <label for="otheremail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="otheremail" name="otheremail" placeholder="Podaj email" required>
+                        </div>
+                        <!-- Ulica -->
+                        <div class="col-md-6">
+                            <label for="otherroad" class="form-label">Numer domu</label>
+                            <input type="text" class="form-control" id="otherroad" name="otherroad" placeholder="Podaj numer domu" required>
+                        </div>
+                        <!-- Numer domu -->
+                        <div class="col-md-6">
+                            <label for="otherhouseNumber" class="form-label">Numer domu</label>
+                            <input type="text" class="form-control" id="otherhouseNumber" name="otherhouseNumber" placeholder="Podaj numer domu" required>
+                        </div>
+                        <!-- Kod pocztowy -->
+                        <div class="col-md-6">
+                            <label for="otherpostalCode" class="form-label">Kod pocztowy</label>
+                            <input type="text" class="form-control" id="otherpostalCode" name="otherpostalCode" placeholder="00-000" pattern="\d{2}-\d{3}" required>
+                        </div>
+                        <!-- Miejscowość -->
+                        <div class="col-md-6">
+                            <label for="othercity" class="form-label">Miejscowość</label>
+                            <input type="text" class="form-control" id="othercity" name="othercity" placeholder="Podaj miejscowość" required>
+                        </div>
+                    </div>
                 </div>
-                <!-- Kraj -->
-                <div class="col-md-6">
-                    <label for="country" class="form-label">Kraj</label>
-                    <select class="form-select" id="country" name="country" required>
-                        <option value="">Wybierz kraj...</option>
-                        <option value="PL">Polska</option>
-                        <option value="DE">Niemcy</option>
-                        <option value="FR">Francja</option>
-                        <option value="US">Stany Zjednoczone</option>
-                    </select>
                 </div>
-                <!-- Nr telefonu -->
-                <div class="col-md-6">
-                    <label for="phone" class="form-label">Numer telefonu</label>
-                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="Podaj numer telefonu" required>
-                </div>
-                <!-- Email -->
-                <div class="col-md-6">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Podaj email" required>
-                </div>
-                <!-- Kod pocztowy -->
-                <div class="col-md-6">
-                    <label for="postalCode" class="form-label">Kod pocztowy</label>
-                    <input type="text" class="form-control" id="postalCode" name="postalCode" placeholder="00-000" pattern="\d{2}-\d{3}" required>
-                </div>
-                <!-- Numer domu -->
-                <div class="col-md-6">
-                    <label for="houseNumber" class="form-label">Numer domu</label>
-                    <input type="text" class="form-control" id="houseNumber" name="houseNumber" placeholder="Podaj numer domu" required>
-                </div>
-                <!-- Miejscowość -->
-                <div class="col-md-6">
-                    <label for="city" class="form-label">Miejscowość</label>
-                    <input type="text" class="form-control" id="city" name="city" placeholder="Podaj miejscowość" required>
-                </div>
+            </form>
             </div>
-        </form>
-            </div>
+            <?php
+            echo '<div class="container-md" style="text-align: right; color: black">
+                    <hr style=" border: 3px solid black;">
+                    <h4 >Łącznie '.$_SESSION['whole_price'].' zł</h4>
+                    <a href="../podsumowanie" class="btn btn-success btn-lg">Dalej</a>
+                </div>';
+            ?>
         </div>
     </div>
 </div>
@@ -284,8 +338,6 @@ session_start();
       <a class="text-dark" href="https://github.com/Jettii04/sklep_internetowy">github.com</a>
     </div>
 </footer>
-
-</form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
