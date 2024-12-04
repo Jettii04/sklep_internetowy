@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['admin']) || (isset($_SESSION['admin'])&&$_SESSION['admin']==0)){
+if((!isset($_SESSION['admin']) || (isset($_SESSION['admin'])&&$_SESSION['admin']==0)) && (!isset($_SESSION['employee']) || (isset($_SESSION['employee'])&&$_SESSION['employee']==0))){
     header("location: ../");
 }
 ?> 
@@ -24,7 +24,7 @@ if(!isset($_SESSION['admin']) || (isset($_SESSION['admin'])&&$_SESSION['admin']=
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="../">Stroa główna</a>
+                    <a class="nav-link" href="../">Strona główna</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">O nas</a>
@@ -54,29 +54,6 @@ if(!isset($_SESSION['admin']) || (isset($_SESSION['admin'])&&$_SESSION['admin']=
                   Dodaj Podstronę
               </a>
           </li>
-
-          <li class="nav-item mb-1">
-              <a href="" class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#settings" aria-expanded="false" aria-controls="settings">
-                  <span class="topic">Settings </span>
-              </a>
-              <ul id="settings" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                  <li class="sidebar-item">
-                      <a href="" class="nav-link">
-                          <span class=""> Login</span>
-                      </a>
-                  </li>
-                  <li class="sidebar-item">
-                      <a href="" class="nav-link">
-                          <span class="">Register</span>
-                      </a>
-                  </li>
-                  <li class="sidebar-item">
-                      <a href="" class="nav-link">
-                          <span class="">Log Out</span>
-                      </a>
-                  </li>
-              </ul>
-          </li>
       </ul>
       <hr>
       <div class="d-flex">
@@ -98,14 +75,7 @@ if(!isset($_SESSION['admin']) || (isset($_SESSION['admin'])&&$_SESSION['admin']=
       </div>
       <!-- Ciało storny -->
       <div class="p-4">
-          <div class="row">
-              <div class="col" id="main">
-                  <hr>
-                  <p>
-                    <h1></h1>
-                  </p>
-              </div>
-          </div>
+          
       </div>
   </div>
 </div>
