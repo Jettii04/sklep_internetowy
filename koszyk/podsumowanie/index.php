@@ -222,7 +222,7 @@ if($_POST['addressCheckbox']!=1){
                      <div class="row m-2 mt-3">
                         <div class="col-3">
                         <h5>Dane</h5>
-                        <p>ul.'.$_SESSION['Fname'].' '.$_SESSION['Fsurname'].'</p>
+                        <p>.'.$_SESSION['Fname'].' '.$_SESSION['Fsurname'].'</p>
                         <p>'.$_SESSION['Femail'].'</p>
                         <p>'.$_SESSION['Fphone'].'</p>
                         </div>
