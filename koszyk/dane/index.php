@@ -167,111 +167,103 @@ session_start();
         <h2>Dane do zamówienia</h2>    
         <hr>
         </div>
+        <form method="post" action="../podsumowanie/">
             <div class="container-md cart-item mb-2">
-            <form>
                 <div class="row">
                 <div class="col-12 col-md-6">
                     <div class="row g-3 m-2">
                         <!-- Imię -->
                         <div class="col-md-6">
                             <label for="firstName" class="form-label">Imię</label>
-                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Podaj imię" required>
+                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Podaj imię" value="<?php echo $_SESSION['name']?>" required>
                         </div>
                         <!-- Nazwisko -->
                         <div class="col-md-6">
                             <label for="lastName" class="form-label">Nazwisko</label>
-                            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Podaj nazwisko" required>
+                            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Podaj nazwisko" value="<?php echo $_SESSION['surname']?>" required>
                         </div>
                         <!-- Nr telefonu -->
                         <div class="col-md-6">
                             <label for="phone" class="form-label">Numer telefonu</label>
-                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="Podaj numer telefonu" required>
+                            <input type="text" class="form-control" id="phone" name="phone" placeholder="Podaj numer telefonu" value="<?php echo $_SESSION['phone']?>" required>
                         </div>
                         <!-- Email -->
                         <div class="col-md-6">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Podaj email" required>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Podaj email" value="<?php echo $_SESSION['email']?>" required>
                         </div>
                         <!-- Ulica -->
                         <div class="col-md-6">
-                            <label for="road" class="form-label">Numer domu</label>
-                            <input type="text" class="form-control" id="road" name="road" placeholder="Podaj numer domu" required>
+                            <label for="road" class="form-label">Ulica</label>
+                            <input type="text" class="form-control" id="road" name="road" placeholder="Podaj ulice" value="<?php echo $_SESSION['road']?>" required>
                         </div>
                         <!-- Numer domu -->
                         <div class="col-md-6">
                             <label for="houseNumber" class="form-label">Numer domu</label>
-                            <input type="text" class="form-control" id="houseNumber" name="houseNumber" placeholder="Podaj numer domu" required>
+                            <input type="text" class="form-control" id="houseNumber" name="houseNumber" placeholder="Podaj numer domu" value="<?php echo $_SESSION['house_number']?>" required>
                         </div>
                         <!-- Kod pocztowy -->
                         <div class="col-md-6">
                             <label for="postalCode" class="form-label">Kod pocztowy</label>
-                            <input type="text" class="form-control" id="postalCode" name="postalCode" placeholder="00-000" pattern="\d{2}-\d{3}" required>
+                            <input type="text" class="form-control" id="postalCode" name="postalCode" placeholder="00-000" pattern="\d{2}-\d{3}" value="<?php echo $_SESSION['postal_code']?>" required>
                         </div>
                         <!-- Miejscowość -->
                         <div class="col-md-6">
                             <label for="city" class="form-label">Miejscowość</label>
-                            <input type="text" class="form-control" id="city" name="city" placeholder="Podaj miejscowość" required>
+                            <input type="text" class="form-control" id="city" name="city" placeholder="Podaj miejscowość" value="<?php echo $_SESSION['city']?>" required>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-md-6">
                     <div class="mt-3" style="text-align: center;">
-                        <input type="checkbox" id="addressCheckbox" name="addressCheckbox" value="0" onchange="addres();">
+                        <input type="checkbox" id="addressCheckbox" name="addressCheckbox" value="1" onchange="address();">
                         <label for="addressCheckbox"> Inny adres dostawy</label><br>
                     </div>
                     <div class="row g-3 m-2">
+                    <div id="otheraddress" style="display: none;">
                         <!-- Imię -->
                         <div class="col-md-6">
                             <label for="otherfirstName" class="form-label">Imię</label>
-                            <input type="text" class="form-control" id="otherfirstName" name="otherfirstName" placeholder="Podaj imię" required>
+                            <input type="text" class="form-control" id="otherfirstName" name="otherfirstName" placeholder="Podaj imię">
                         </div>
                         <!-- Nazwisko -->
                         <div class="col-md-6">
                             <label for="otherlastName" class="form-label">Nazwisko</label>
-                            <input type="text" class="form-control" id="otherlastName" name="otherlastName" placeholder="Podaj nazwisko" required>
-                        </div>
-                        <!-- Nr telefonu -->
-                        <div class="col-md-6">
-                            <label for="otherphone" class="form-label">Numer telefonu</label>
-                            <input type="tel" class="form-control" id="otherphone" name="otherphone" placeholder="Podaj numer telefonu" required>
-                        </div>
-                        <!-- Email -->
-                        <div class="col-md-6">
-                            <label for="otheremail" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="otheremail" name="otheremail" placeholder="Podaj email" required>
+                            <input type="text" class="form-control" id="otherlastName" name="otherlastName" placeholder="Podaj nazwisko" >
                         </div>
                         <!-- Ulica -->
                         <div class="col-md-6">
                             <label for="otherroad" class="form-label">Numer domu</label>
-                            <input type="text" class="form-control" id="otherroad" name="otherroad" placeholder="Podaj numer domu" required>
+                            <input type="text" class="form-control" id="otherroad" name="otherroad" placeholder="Podaj numer domu">
                         </div>
                         <!-- Numer domu -->
                         <div class="col-md-6">
                             <label for="otherhouseNumber" class="form-label">Numer domu</label>
-                            <input type="text" class="form-control" id="otherhouseNumber" name="otherhouseNumber" placeholder="Podaj numer domu" required>
+                            <input type="text" class="form-control" id="otherhouseNumber" name="otherhouseNumber" placeholder="Podaj numer domu">
                         </div>
                         <!-- Kod pocztowy -->
                         <div class="col-md-6">
                             <label for="otherpostalCode" class="form-label">Kod pocztowy</label>
-                            <input type="text" class="form-control" id="otherpostalCode" name="otherpostalCode" placeholder="00-000" pattern="\d{2}-\d{3}" required>
+                            <input type="text" class="form-control" id="otherpostalCode" name="otherpostalCode" placeholder="00-000" pattern="\d{2}-\d{3}">
                         </div>
                         <!-- Miejscowość -->
                         <div class="col-md-6">
                             <label for="othercity" class="form-label">Miejscowość</label>
-                            <input type="text" class="form-control" id="othercity" name="othercity" placeholder="Podaj miejscowość" required>
+                            <input type="text" class="form-control" id="othercity" name="othercity" placeholder="Podaj miejscowość">
                         </div>
+                    </div>
                     </div>
                 </div>
                 </div>
-            </form>
             </div>
             <?php
             echo '<div class="container-md" style="text-align: right; color: black">
-                    <hr style=" border: 3px solid black;">
-                    <h4 >Łącznie '.$_SESSION['whole_price'].' zł</h4>
-                    <a href="../podsumowanie" class="btn btn-success btn-lg">Dalej</a>
-                </div>';
+            <hr style=" border: 3px solid black;">
+            <h4 >Łącznie '.$_SESSION['whole_price'].' zł</h4>
+            <input type="submit" name="submit" class="btn btn-success btn-lg" value="Dalej">
+            </div>';
             ?>
+            </form>
         </div>
     </div>
 </div>
@@ -348,18 +340,26 @@ session_start();
         // funkcja ajax uruchamiająca plik logout.php
         function logout(){
             $.ajax({
-                url: "../scripts/logout.php",
+                url: "../../scripts/logout.php",
             }).done(function( data ) {
-                location.reload();
+                window.location.assign("../../");
             });
         }
 
         function login(){
-            window.location.assign("../login/");
+            window.location.assign("../../login/");
         }
 
         function register(){
-            window.location.assign("../rejestr/");
+            window.location.assign("../../rejestr/");
+        }
+        function address(){
+            const element = document.getElementById("otheraddress"); 
+            if(element.style.display=="none"){
+                element.style.display = "block";
+            }else{
+                element.style.display = "none";
+            }
         }
         </script>
 </body>

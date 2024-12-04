@@ -1,5 +1,24 @@
 <?php
 session_start();
+require_once('../../scripts/database.php');
+$_SESSION['Femail']=htmlspecialchars($_POST['email']);
+$_SESSION['Fphone']=htmlspecialchars($_POST['phone']);
+if($_POST['addressCheckbox']!=1){
+    $_SESSION['Fname']=htmlspecialchars($_POST['firstName']);
+    $_SESSION['Fsurname']=htmlspecialchars($_POST['lastName']);
+    $_SESSION['Fpostal_code']=htmlspecialchars($_POST['postalCode']);
+    $_SESSION['Fcity']=htmlspecialchars($_POST['city']);
+    $_SESSION['Froad']=htmlspecialchars($_POST['road']);
+    $_SESSION['Fhouse_number']=htmlspecialchars($_POST['houseNumber']);
+}else{
+    $_SESSION['Fname']=htmlspecialchars($_POST['otherfirstName']);
+    $_SESSION['Fsurname']=htmlspecialchars($_POST['otherlastName']);
+    $_SESSION['Fpostal_code']=htmlspecialchars($_POST['otherpostalCode']);
+    $_SESSION['Fcity']=htmlspecialchars($_POST['othercity']);
+    $_SESSION['Froad']=htmlspecialchars($_POST['otherroad']);
+    $_SESSION['Fhouse_number']=htmlspecialchars($_POST['otherhouseNumber']);
+}
+echo $_SESSION['Fname'];
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -184,12 +203,14 @@ session_start();
                 <!-- Łączna cena koszyka -->
                 <div id="cart-summary">
                     <h4 class="text-center">Łączna cena</h4>
-                    <p class="total-price text-center">300 zł</p>
+                    <p class="total-price text-center"><?php echo $_SESSION['whole_price'];?></p>
                 </div>
 
                 <!-- Przycisk przejścia do płatności -->
                 <div class="text-center mt-2 mb-2">
-                    <a href="../../" class="btn btn-success btn-lg">Przejdź do płatności</a>
+                    <form action="../../scripts/add_order.php">
+                    <input type="submit" class="btn btn-success btn-lg" value="Przejdź do płatności">
+                    </form>
                 </div>
             </div>
             </div>
