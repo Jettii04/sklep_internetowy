@@ -86,12 +86,54 @@ if(isset($_SESSION['login'])){
         //exit();
     }
 }else{
+
+    //id zamówienina
+    try {
+        $o = $pdo->query("SELECT MAX(order_id) FROM orders");
+        $order = $o->fetchColumn();
+        $order += 1;
+    }catch (PDOException $e) {
+        echo 'Wystąpił błąd';
+        //exit();
+    }
+
+    $data = [
+        'order_status' => 1,
+        'postal' => $_SESSION['Fpostal_code'],
+        'city' => $_SESSION['Fcity'],
+        'road' => $_SESSION['Froad'],
+        'house' => $_SESSION['Fhouse_number'],
+        'pay' => $_COOKIE['payment_method'],
+        'deliv' => $_COOKIE['delivery_method'],
+        'order_id'=> $order
+    ];
+    // tworzenie zamówienia
+    try {
+        $c = $pdo->prepare("INSERT INTO orders (order_id,order_status,postal_code,city,road,house_number,payment_method,delivery_method) VALUES (:order_id,:order_status,:postal,:city,:road,:house,:pay,:deliv)");
+        $c->execute($data);
+    }catch (PDOException $e) {
+        echo 'Wystąpił błąd';
+        //exit();
+    }
+
     if(isset($_COOKIE['cart'])){
         $cart = json_decode($_COOKIE['cart'], true); 
     }else{
         $cart=[];
     }
     foreach($cart as $key=>$value){
+        $data = [
+            'item' => $key,
+            'amount' => $value,
+            'order' => $order
+        ];
+        try {
+            $items = $pdo->prepare("INSERT INTO order_items (order_id,item_id,amount) VALUES (:order,:item,:amount)");
+            $items->execute($data);
+        }catch (PDOException $e) {
+            echo 'Wystąpił błąd2';
+            //exit();
+        }
         unset($cart[$key]);
     }
     setcookie('cart', json_encode($cart), time() + (86400 * 30), "/");

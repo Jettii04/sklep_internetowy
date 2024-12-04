@@ -233,8 +233,8 @@ session_start();
                         </div>
                         <!-- Ulica -->
                         <div class="col-md-6">
-                            <label for="otherroad" class="form-label">Numer domu</label>
-                            <input type="text" class="form-control" id="otherroad" name="otherroad" placeholder="Podaj numer domu">
+                            <label for="otherroad" class="form-label">Ulica</label>
+                            <input type="text" class="form-control" id="otherroad" name="otherroad" placeholder="Podaj ulice">
                         </div>
                         <!-- Numer domu -->
                         <div class="col-md-6">
