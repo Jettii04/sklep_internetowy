@@ -1,7 +1,7 @@
 <!-- navbar -->
 <nav class="navbar navbar-expand-md navbar-dark bg-black sticky-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">
+        <a class="navbar-brand" href="https://chalimoniukmikolaj.infinityfreeapp.com/">
         <img src="https://chalimoniukmikolaj.infinityfreeapp.com/assets/images/biden.jpg" style="width: 30px; height: 30px; object-fit: cover;" width="30" height="30" alt="">    
         Greg.inc</a>
         <div class="d-flex me-auto ms-auto">
@@ -15,10 +15,12 @@
             <ul class="navbar-nav ms-auto">
                 <?php 
                 if(isset($_SESSION['login'])){
-                    if($_SESSION['admin']==1 || $_SESSION['employee']=1){
+                    if($_SESSION['admin']==1 || $_SESSION['employee']==1){
                         echo  '
                         <li class="nav-item">
-                            <a class="nav-link" href="https://chalimoniukmikolaj.infinityfreeapp.com/admin">Strona główna</a>
+                            <a class="nav-link btn btn-outline-secondary" href="https://chalimoniukmikolaj.infinityfreeapp.com/admin">
+                            Panel administracyjny
+                            </a>
                         </li>';
                     }
                     echo'
