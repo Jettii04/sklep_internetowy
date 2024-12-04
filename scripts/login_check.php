@@ -34,6 +34,18 @@ if((htmlspecialchars($_POST['login'])==$login || htmlspecialchars($_POST['login'
         $_SESSION['admin']=0;
     }
     $_SESSION['login']=$login;
+    $u = $pdo->prepare("SELECT * FROM users WHERE login = :login");
+    $u->bindValue(':login',htmlspecialchars($_POST['login']), PDO::PARAM_STR);
+    $u->execute();
+    $user = $u->fetch(PDO::FETCH_ASSOC);
+    $_SESSION['name']=$user['name'];
+    $_SESSION['surname']=$user['surname'];
+    $_SESSION['email']=$user['email'];
+    $_SESSION['phone']=$user['phone'];
+    $_SESSION['postal_code']=$user['postal_code'];
+    $_SESSION['city']=$user['city'];
+    $_SESSION['road']=$user['road'];
+    $_SESSION['house_number']=$user['house_number'];
    
 }else{
     $form ='
