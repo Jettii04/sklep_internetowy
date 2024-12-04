@@ -264,66 +264,7 @@ if($_POST['addressCheckbox']!=1){
     
 
 <!-- Stopka -->
-<footer style="background-color: white;">
-    <div class="container p-4 pb-2">
-      <div class="row">
-        <div class="col-lg-3 col-md-6 mb-4">
-          <h5 class="mb-3" style="letter-spacing: 2px; color: #7f4722;">sklep</h5>
-          <ul class="list-unstyled mb-0">
-            <li class="mb-1">
-              <a href="../" style="color: #4f4f4f;">strona główna</a>
-            </li>
-            <li class="mb-1">
-              <a href="../katalog/" style="color: #4f4f4f;">katalog</a>
-            </li>
-          </ul>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4">
-          <h5 class="mb-3" style="letter-spacing: 2px; color: #7f4722;">social media</h5>
-          <ul class="list-unstyled mb-0">
-            <li class="mb-1">
-              <a href="" style="color: #4f4f4f;">youtube</a>
-            </li>
-            <li class="mb-1">
-              <a href="" style="color: #4f4f4f;">instagram</a>
-            </li>
-          </ul>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4">
-          <h5 class="mb-3" style="letter-spacing: 2px; color: #7f4722;">firma</h5>
-          <ul class="list-unstyled mb-0">
-            <li class="mb-1">
-              <a href="" style="color: #4f4f4f;">o nas</a>
-            </li>
-          </ul>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-4">
-          <h5 class="mb-3" style="letter-spacing: 2px; color: #7f4722;">konto</h5>
-          <ul class="list-unstyled mb-0">
-            <li class="mb-1">
-              <a href="../konto/" style="color: #4f4f4f;">konto</a>
-            </li>
-            <li class="mb-1">
-              <a href="../konto/ulubione/" style="color: #4f4f4f;">ulubione</a>
-            </li>
-            <li class="mb-1">
-              <a href="../konto/zamowienia" style="color: #4f4f4f;">zamówienia</a>
-            </li>
-            <li class="mb-1">
-              <a href="../koszyk/" style="color: #4f4f4f;">koszyk</a>
-            </li>
-            <li class="mb-1">
-              <a href="../konto/dane/" style="color: #4f4f4f;">dane</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);color: black;">
-      © 2024 Mikołaj Chalimoniuk Grzegorz Komar:
-      <a class="text-dark" href="https://github.com/Jettii04/sklep_internetowy">github.com</a>
-    </div>
-</footer>
+<?php include("../../scripts/footer.php")?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
