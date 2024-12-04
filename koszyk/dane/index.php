@@ -131,37 +131,8 @@ session_start();
                         <label for="addressCheckbox"> Inny adres dostawy</label><br>
                     </div>
                     <div class="row g-3 m-2">
-                    <div id="otheraddress" style="display: none;">
-                        <!-- Imię -->
-                        <div class="col-md-6">
-                            <label for="otherfirstName" class="form-label">Imię</label>
-                            <input type="text" class="form-control" id="otherfirstName" name="otherfirstName" placeholder="Podaj imię">
-                        </div>
-                        <!-- Nazwisko -->
-                        <div class="col-md-6">
-                            <label for="otherlastName" class="form-label">Nazwisko</label>
-                            <input type="text" class="form-control" id="otherlastName" name="otherlastName" placeholder="Podaj nazwisko" >
-                        </div>
-                        <!-- Ulica -->
-                        <div class="col-md-6">
-                            <label for="otherroad" class="form-label">Ulica</label>
-                            <input type="text" class="form-control" id="otherroad" name="otherroad" placeholder="Podaj ulice">
-                        </div>
-                        <!-- Numer domu -->
-                        <div class="col-md-6">
-                            <label for="otherhouseNumber" class="form-label">Numer domu</label>
-                            <input type="text" class="form-control" id="otherhouseNumber" name="otherhouseNumber" placeholder="Podaj numer domu">
-                        </div>
-                        <!-- Kod pocztowy -->
-                        <div class="col-md-6">
-                            <label for="otherpostalCode" class="form-label">Kod pocztowy</label>
-                            <input type="text" class="form-control" id="otherpostalCode" name="otherpostalCode" placeholder="00-000" pattern="\d{2}-\d{3}">
-                        </div>
-                        <!-- Miejscowość -->
-                        <div class="col-md-6">
-                            <label for="othercity" class="form-label">Miejscowość</label>
-                            <input type="text" class="form-control" id="othercity" name="othercity" placeholder="Podaj miejscowość">
-                        </div>
+                    <div id="otheraddress">
+                        
                     </div>
                     </div>
                 </div>
@@ -207,12 +178,16 @@ session_start();
             window.location.assign("../../rejestr/");
         }
         function address(){
-            const element = document.getElementById("otheraddress"); 
-            if(element.style.display=="none"){
-                element.style.display = "block";
-            }else{
-                element.style.display = "none";
-            }
+            alert($('#addressCheckbox').val());
+            $.ajax({
+                url: "../../scripts/other_address.php",
+                method: 'POST',
+                data: {
+                    check: $('#addressCheckbox').val(),
+                }
+            }).done(function( data ) {
+                    $('#otheraddress').html(data);
+            });
         }
         </script>
 </body>

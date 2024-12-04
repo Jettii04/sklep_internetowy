@@ -32,30 +32,30 @@
                 <form id="registerform">
                     <div class="form-group">
                         <label  for="login">Login</label>
-                        <input type="text" class="form-control mb-3" name="login" id="login" placeholder="Login" maxlength="30">
+                        <input type="text" class="form-control mb-3" name="login" id="login" placeholder="Login" maxlength="30" required>
                     </div>
                     <div class="form-group">
                         <label  for="name">Imię</label>
-                        <input type="text" class="form-control mb-3" name="name" id="name" placeholder="Imię" maxlength="30">
+                        <input type="text" class="form-control mb-3" name="name" id="name" placeholder="Imię" maxlength="30" required>
                     </div>
                     <div class="form-group">
                         <label  for="surname">Nazwisko</label>
-                        <input type="text" class="form-control mb-3" name="surname" id="surname" placeholder="Nazwisko" maxlength="40">
+                        <input type="text" class="form-control mb-3" name="surname" id="surname" placeholder="Nazwisko" maxlength="40" required>
                     </div>
                     <div class="form-group">
                         <label  for="email">Email</label>
-                        <input type="email" class="form-control mb-3" name="email" id="email" placeholder="Email" maxlength="320">
+                        <input type="email" class="form-control mb-3" name="email" id="email" placeholder="Email" maxlength="320" required>
                     </div>
                     <div class="form-group">
                         <label for="password">Hasło</label>
-                        <input type="password" class="form-control mb-3" name="password" id="password" placeholder="Hasło" maxlength="50">
+                        <input type="password" class="form-control mb-3" name="password" id="password" placeholder="Hasło" maxlength="50" required>
                     </div>
                     <div class="form-group">
                         <label for="repeat_password">Powtórz hasło</label>
-                        <input type="password" class="form-control mb-3" name="repeat_password" id="repeat_password" placeholder="Hasło" maxlength="50">
+                        <input type="password" class="form-control mb-3" name="repeat_password" id="repeat_password" placeholder="Hasło" maxlength="50" required>
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-primary" type="submit" id="create_button">Utwórz konto</button>
+                        <input class="btn btn-primary" type="submit" id="create_button" value="Utwórz konto">
                     </div>
                 </form>
             </div>
@@ -90,6 +90,7 @@
                 if(data=="register"){
                     window.location.assign('../');
                 }else{
+                    
                     $('#registerform').html(data);
                 }
                 

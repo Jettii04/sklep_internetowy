@@ -156,11 +156,35 @@ require_once("../../scripts/database.php");
             </div>
             <?php 
                 if(isset($_SESSION['login'])){
+
+                    $data = [
+                        'user' => $_SESSION['login'],
+                    ];
+
+                    $noi = $pdo->prepare("SELECT COUNT(*) FROM orders WHERE user=:user");
+                    $noi->execute($data);
+                    $nOfitems = $noi->fetchColumn();
+
+                    $nOnpage=4;
+
+                    if($nOfitems%$nOnpage!=0){
+                        $nOfpages=floor($nOfitems/$nOnpage)+1;
+                    }else{
+                        $nOfpages=floor($nOfitems/$nOnpage);
+                    }
+
+                    $page=1;
+                    $offset=0;
+                    if(isset($_GET['page'])){
+                        $page=htmlspecialchars($_GET['page']);
+                        $offset=($page-1)*$nOnpage;
+                    }
+
                     $data = [
                         'user' => $_SESSION['login'],
                     ];
                     try {
-                        $orders = $pdo->prepare("SELECT * FROM orders WHERE user=:user ORDER BY order_id DESC");
+                        $orders = $pdo->prepare("SELECT * FROM orders WHERE user=:user ORDER BY order_id DESC LIMIT ".$nOnpage." OFFSET ".$offset);
                         $orders->execute($data);
                     }catch (PDOException $e) {
                         echo 'Nie udało się odczytać danych z bazy';
@@ -278,6 +302,23 @@ require_once("../../scripts/database.php");
 
                 }
                 ?>
+            <form method="get" action="">
+            <div class="mt-3" style="text-align: center;">
+                <?php 
+                for($j=1;$j<=$nOfpages;$j++){
+                    if($page==$j){
+                        echo '
+                        <input type="submit" class="btn btn-dark" name="page" value="'.$j.'">
+                        ';
+                    }else{
+                        echo '
+                        <input type="submit" class="btn btn-outline-dark" name="page" value="'.$j.'">
+                        ';
+                    }
+                }
+                ?>
+            </div>
+            </form>
         </div>
     </div>
 </div>

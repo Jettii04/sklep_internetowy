@@ -114,7 +114,11 @@ require_once("../scripts/database.php");
 
                     $wholeprice=0;
 
-                    foreach($q as $item){ 
+                    foreach($q as $item){
+                        if($item['amount']<1){
+                            $item['amount']=1;
+                        }
+
 
                     $priceW = $item['price']*$item['amount'];
                     
@@ -161,6 +165,9 @@ require_once("../scripts/database.php");
                         $cart = [];
                     }
                     foreach($cart as $key=>$amount){ 
+                        if($amount<1){
+                            $amount=1;
+                        }
 
                         $data = [
                             'item_id' => $key,
