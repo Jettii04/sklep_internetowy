@@ -65,7 +65,7 @@ session_start();
     </style>
 </head>
 <body>
-<form action="../katalog/" method="get">
+<form action="../../katalog/" method="get">
 <!-- navbar -->
 <nav class="navbar navbar-expand-md navbar-dark bg-black sticky-top">
     <div class="container-fluid">
