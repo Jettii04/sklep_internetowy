@@ -26,9 +26,12 @@ $employeeLogin = $employees->fetchColumn();
 
 if((htmlspecialchars($_POST['login'])==$login || htmlspecialchars($_POST['login'])==$adminLogin || htmlspecialchars($_POST['login'])==$employeeLogin) && htmlspecialchars($_POST['login'])!=''){
     session_start();
-    if($adminLogin!="" || $employeeLogin!=""){
+    if($adminLogin!=""){
         $form='admin';
         $_SESSION['admin']=1;
+    }elseif($adminLogin!="" || $employeeLogin!=""){
+        $form='admin';
+        $_SESSION['employee']=1;
     }else{
         $form='login';
         $_SESSION['admin']=0;
