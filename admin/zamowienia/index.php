@@ -9,7 +9,7 @@ require_once("../../scripts/database.php");
 <html lang="pl">
 <head>
     <meta charset="utf-8">
-    <title>Dane użytkownika</title>
+    <title>Zamówienia</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="your-project-dir/icon-font/lineicons.css" rel="stylesheet" >
     <link href="https://cdn.lineicons.com/5.0/lineicons.css" rel="stylesheet" >
