@@ -182,33 +182,8 @@ require_once("../../scripts/database.php");
 
 <div class="container-fluid p-0 d-flex h-100">
 
-    <div id="bdSidebar" class="d-flex flex-column flex-shrink-0 p-3 bg-dark text-white offcanvas-md offcanvas-start">
-        <ul class="mynav nav nav-pills flex-column mb-auto">
-            <li class="nav-item mb-1">
-                <a href="../dane/" class="nav-link">
-                    Dane
-                </a>
-            </li>
-            <li class="nav-item mb-1">
-                <a href="../ulubione/" class="nav-link">
-                    Ulubione
-                </a>
-            </li>
-            <li class="nav-item mb-1">
-                <a href="javascript:logout()" class="nav-link" style="color: red;">
-                    Wyloguj
-                </a>
-            </li>
-        </ul>
-        <hr>
-        <div class="d-flex">
-            <span>
-                <h6 class="mt-1 mb-0">
-                        
-                </h6>
-            </span>
-        </div>
-    </div>
+    <!-- Sidebar -->
+    <?php include("../admin_sidebar.php")?>
 
     <div class="bg-light flex-fill">
         <!-- Sidebar po zmniejszeniu -->
