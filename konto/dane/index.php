@@ -148,7 +148,7 @@ if(!isset($_SESSION['login'])){
                         <!-- Nr telefonu -->
                         <div class="col-md-6">
                             <label for="phone" class="form-label">Numer telefonu</label>
-                            <input type="text" class="form-control" id="phone" name="phone" placeholder="Podaj numer telefonu" value="<?php echo $_SESSION['phone']?>">
+                            <input type="text" class="form-control" id="phone" name="phone" placeholder="Podaj numer telefonu" value="<?php echo $_SESSION['phone']?>" pattern="[0-9]{9}">
                         </div>
                         <!-- Email -->
                         <div class="col-md-6">

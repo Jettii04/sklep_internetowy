@@ -52,7 +52,7 @@
         </li>
         <li class="nav-item mb-1">
             <a href="https://chalimoniukmikolaj.infinityfreeapp.com/admin/admini" class="nav-link">
-                Ulubione
+                Admini
             </a>
         </li>
         <li class="nav-item mb-1">

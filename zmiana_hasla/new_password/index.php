@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<?php
+session_start();
+if(!isset($_SESSION['code'])){
+    header("location: ../");
+}
+?>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
@@ -33,11 +39,11 @@
                 <form id="form" method="post" action="">
                     <div class="form-group">
                         <label  for="new_pass">Nowe Hasło</label>
-                        <input type="password" class="form-control mb-3" name="new_pass" id="new_pass" placeholder="Nowe hasło" maxlength="32" required>
+                        <input type="password" class="form-control mb-3" name="new_pass" id="new_pass" placeholder="Nowe hasło" pattern="[A-Za-z0-9\-\\?\/.>,<\|;:\]\[\}\{+=_\-\)\(*&^%$#@!]{8,50}" title="Hasło musi mieć od 8 do 50 zanków, oraz może zawierać tylko A-Z a-z 0-9 i znaki ?\/><.,:;}{][+=_-)(*&^%$#@!" maxlength="50" required>
                     </div> 
                     <div class="form-group">
                         <label  for="repeat_pass">Powtórz Hasło</label>
-                        <input type="password" class="form-control mb-3" name="repeat_pass" id="repeat_pass" placeholder="Powtórz hasło" maxlength="32" required>
+                        <input type="password" class="form-control mb-3" name="repeat_pass" id="repeat_pass" placeholder="Powtórz hasło" pattern="[A-Za-z0-9\-\\?\/.>,<\|;:\]\[\}\{+=_\-\)\(*&^%$#@!]{8,50}" title="Hasło musi mieć od 8 do 50 zanków, oraz może zawierać tylko A-Z a-z 0-9 i znaki ?\/><.,:;}{][+=_-)(*&^%$#@!" maxlength="50" required>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary" id="send_button">Zmień</button>

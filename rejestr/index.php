@@ -32,27 +32,27 @@
                 <form id="registerform">
                     <div class="form-group">
                         <label  for="login">Login</label>
-                        <input type="text" class="form-control mb-3" name="login" id="login" placeholder="Login" maxlength="30" required>
+                        <input type="text" class="form-control mb-3" name="login" id="login" placeholder="Login" pattern="[0-9a-z\-_]{2,30}" title="Login musi zawierać do 30 zanków, oraz może zawierać tylko a-z 0-9 i znaków _ -" maxlength="30" required>
                     </div>
                     <div class="form-group">
                         <label  for="name">Imię</label>
-                        <input type="text" class="form-control mb-3" name="name" id="name" placeholder="Imię" maxlength="30" required>
+                        <input type="text" class="form-control mb-3" name="name" id="name" placeholder="Imię" pattern="[A-ZÀ-ÿA-ZŻŹĆĄŚĘŁÓŃ][\-,a-z.'żźćńółęąś]+" maxlength="50" required>
                     </div>
                     <div class="form-group">
                         <label  for="surname">Nazwisko</label>
-                        <input type="text" class="form-control mb-3" name="surname" id="surname" placeholder="Nazwisko" maxlength="40" required>
+                        <input type="text" class="form-control mb-3" name="surname" id="surname" placeholder="Nazwisko" pattern="([A-Za-zÀ-ÿA-ZŻŹĆĄŚĘŁÓŃżźćńółęąś][\-,a-z. 'żźćńółęąś]+[ ]*)+[a-zżźćńółęąś]" maxlength="60" required>
                     </div>
                     <div class="form-group">
                         <label  for="email">Email</label>
-                        <input type="email" class="form-control mb-3" name="email" id="email" placeholder="Email" maxlength="320" required>
+                        <input type="email" class="form-control mb-3" name="email" id="email" placeholder="Email" pattern="^[\w\-\.]+@([\w\-]+\.)+[\w\-]{2,4}$" required>
                     </div>
                     <div class="form-group">
                         <label for="password">Hasło</label>
-                        <input type="password" class="form-control mb-3" name="password" id="password" placeholder="Hasło" maxlength="50" required>
+                        <input type="password" class="form-control mb-3" name="password" id="password" placeholder="Hasło" pattern="[A-Za-z0-9\-\\?\/.>,<\|;:\]\[\}\{+=_\-\)\(*&^%$#@!]{8,50}" title="Hasło musi mieć od 8 do 50 zanków, oraz może zawierać tylko A-Z a-z 0-9 i znaki ?\/><.,:;}{][+=_-)(*&^%$#@!" maxlength="50" required>
                     </div>
                     <div class="form-group">
                         <label for="repeat_password">Powtórz hasło</label>
-                        <input type="password" class="form-control mb-3" name="repeat_password" id="repeat_password" placeholder="Hasło" maxlength="50" required>
+                        <input type="password" class="form-control mb-3" name="repeat_password" id="repeat_password" placeholder="Hasło" pattern="[A-Za-z0-9\-\\?\/.>,<\|;:\]\[\}\{+=_\-\)\(*&^%$#@!]{8,50}" title="Hasło musi mieć od 8 do 50 zanków, oraz może zawierać tylko A-Z a-z 0-9 i znaki ?\/><.,:;}{][+=_-)(*&^%$#@!" maxlength="50" required>
                     </div>
                     <div class="form-group">
                         <input class="btn btn-primary" type="submit" id="create_button" value="Utwórz konto">

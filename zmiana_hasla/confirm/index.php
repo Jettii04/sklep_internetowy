@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<?php
+session_start();
+if(!isset($_SESSION['code'])){
+    header("location: ../");
+}
+?>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
@@ -32,7 +38,6 @@
                 <br>
                 <form id="form" method="post" action="">
                     <?php
-                        session_start();
                         if(isset($_POST['code'])){
                             if(htmlspecialchars($_POST['code'])==$_SESSION['code']){
                                 header("location: ../new_password/");
