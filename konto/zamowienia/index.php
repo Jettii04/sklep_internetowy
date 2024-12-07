@@ -209,9 +209,11 @@ require_once("../../scripts/database.php");
                             'method' => $order['delivery_method'],
                         ];
                         try {
-                            $deliv = $pdo->prepare("SELECT name FROM delivery_method WHERE delivery_id=:method");
+                            $deliv = $pdo->prepare("SELECT name, price FROM delivery_method WHERE delivery_id=:method");
                             $deliv->execute($data);
-                            $delivery = $deliv ->fetchColumn();
+                            $d=$deliv->fetch(PDO::FETCH_ASSOC);
+                            $delivery = $d['name'];
+                            $deliveryPrice = $d['price'];
                         }catch (PDOException $e) {
                             echo 'Nie udało się odczytać danych z bazy';
                             //exit();
@@ -223,7 +225,9 @@ require_once("../../scripts/database.php");
                         try {
                             $pay = $pdo->prepare("SELECT name FROM payment_methods WHERE payment_id=:method");
                             $pay->execute($data);
-                            $payment = $pay ->fetchColumn();
+                            $p=$pay->fetch(PDO::FETCH_ASSOC);
+                            $payment = $p['name'];
+                            $paymentPrice = $p['price'];
                         }catch (PDOException $e) {
                             echo 'Nie udało się odczytać danych z bazy';
                             //exit();
@@ -265,6 +269,7 @@ require_once("../../scripts/database.php");
                             //exit();
                         }
                         $wholeprice=0;
+                        $wholeprice+=$deliveryPrice+$paymentPrice;
                         foreach($items as $item){ 
 
                             $priceW = $item['price']*$item['amount'];
@@ -278,7 +283,7 @@ require_once("../../scripts/database.php");
                                     <img class="cart-item-img" src="data:image;base64,'.base64_encode($item['main_img']).'" alt="Zdjęcie produktu">
                                     </div>
                                     <div class="col-9 col-lg-4">
-                                        <a href="../produkt/?item='.$item['item_id'].'"><h4>'.$item['name'].'</h4></a>
+                                        <a href="../../produkt/?item='.$item['item_id'].'"><h4>'.$item['name'].'</h4></a>
                                     </div>
                                     <div class="col-3 col-lg-2 ms-2 ms-lg-0 mt-2 mt-lg-0">
                                         <h5>'.$item['price'].' zł</h5>

@@ -3,7 +3,6 @@ session_start();
 require_once('../../scripts/database.php');
 $_SESSION['Femail']=htmlspecialchars($_POST['email']);
 $_SESSION['Fphone']=htmlspecialchars($_POST['phone']);
-echo $_SESSION['Femail'];
 if($_POST['addressCheckbox']!=1){
     $_SESSION['Fname']=htmlspecialchars($_POST['firstName']);
     $_SESSION['Fsurname']=htmlspecialchars($_POST['lastName']);
@@ -133,7 +132,7 @@ if($_POST['addressCheckbox']!=1){
                      <div class="row m-2 mt-3">
                         <div class="col-3">
                         <h5>Dane</h5>
-                        <p>.'.$_SESSION['Fname'].' '.$_SESSION['Fsurname'].'</p>
+                        <p>'.$_SESSION['Fname'].' '.$_SESSION['Fsurname'].'</p>
                         <p>'.$_SESSION['Femail'].'</p>
                         <p>'.$_SESSION['Fphone'].'</p>
                         </div>
