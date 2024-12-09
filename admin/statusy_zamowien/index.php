@@ -115,7 +115,8 @@ require_once("../../scripts/database.php");
             <h2>Statusy zamówień</h2> 
             <div class="d-flex me-auto ms-auto">
             <input class="form-control me-2" type="search" name="search" placeholder="Szukaj wedłóg nazwy..." aria-label="Search" value="<?php if(isset($_GET['search'])){ echo $_GET['search'];}?>">
-            <button class="btn btn-primary" type="submit">Szukaj</button>   
+            <button class="btn btn-primary" type="submit">Szukaj</button> 
+            <a href="add/" class="btn btn-success ms-3">Dodaj</a>  
             </div>
             <hr>
             </div>
