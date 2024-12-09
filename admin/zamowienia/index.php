@@ -111,6 +111,7 @@ require_once("../../scripts/database.php");
             <div class="d-flex me-auto ms-auto">
             <input class="form-control me-2" type="search" name="search" placeholder="Szukaj wedłóg numeru zamówienia lub loginu urzytkownika..." aria-label="Search">
             <button class="btn btn-primary" type="submit">Szukaj</button>   
+            <a href="add/" class="btn btn-success ms-3">Dodaj</a>
             </div>
             <hr>
             </div>

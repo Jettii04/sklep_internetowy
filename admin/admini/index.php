@@ -1,7 +1,7 @@
 <?php
 session_start();
-if(!isset($_SESSION['login'])){
-    header("location: ../../");
+if(!isset($_SESSION['admin']) || (isset($_SESSION['admin'])&&$_SESSION['admin']==0)){
+    header("location: https://chalimoniukmikolaj.infinityfreeapp.com/");
 }
 require_once("../../scripts/database.php");
 ?>
@@ -116,6 +116,7 @@ require_once("../../scripts/database.php");
             <div class="d-flex me-auto ms-auto">
             <input class="form-control me-2" type="search" name="search" placeholder="Szukaj wedłóg loginu..." aria-label="Search" value="<?php if(isset($_GET['search'])){ echo $_GET['search'];}?>">
             <button class="btn btn-primary" type="submit">Szukaj</button>   
+            <a href="add/" class="btn btn-success ms-3">Dodaj</a>
             </div>
             <hr>
             </div>
