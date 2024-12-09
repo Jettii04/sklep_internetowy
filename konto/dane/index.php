@@ -138,12 +138,12 @@ if(!isset($_SESSION['login'])){
                         <!-- Imię -->
                         <div class="col-md-6">
                             <label for="firstName" class="form-label">Imię</label>
-                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Podaj imię" value="<?php echo $_SESSION['name']?>" required>
+                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Podaj imię" pattern="[A-ZÀ-ÿA-ZŻŹĆĄŚĘŁÓŃ][\-,a-z.'żźćńółęąś]+" maxlength="50" value="<?php echo $_SESSION['name']?>" required>
                         </div>
                         <!-- Nazwisko -->
                         <div class="col-md-6">
                             <label for="lastName" class="form-label">Nazwisko</label>
-                            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Podaj nazwisko" value="<?php echo $_SESSION['surname']?>" required>
+                            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Podaj nazwisko" pattern="([A-Za-zÀ-ÿA-ZŻŹĆĄŚĘŁÓŃżźćńółęąś][\-,a-z. 'żźćńółęąś]+[ ]*)+[a-zżźćńółęąś]" maxlength="60" value="<?php echo $_SESSION['surname']?>" required>
                         </div>
                         <!-- Nr telefonu -->
                         <div class="col-md-6">
@@ -153,17 +153,17 @@ if(!isset($_SESSION['login'])){
                         <!-- Email -->
                         <div class="col-md-6">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Podaj email" value="<?php echo $_SESSION['email']?>" required>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Podaj email" pattern="^[\w\-\.]+@([\w\-]+\.)+[\w\-]{2,4}$" value="<?php echo $_SESSION['email']?>" required>
                         </div>
                         <!-- Ulica -->
                         <div class="col-md-6">
                             <label for="road" class="form-label">Ulica</label>
-                            <input type="text" class="form-control" id="road" name="road" placeholder="Podaj ulice" value="<?php echo $_SESSION['road']?>">
+                            <input type="text" class="form-control" id="road" name="road" placeholder="Podaj ulice" maxlength="60" value="<?php echo $_SESSION['road']?>">
                         </div>
                         <!-- Numer domu -->
                         <div class="col-md-6">
                             <label for="houseNumber" class="form-label">Numer domu</label>
-                            <input type="text" class="form-control" id="houseNumber" name="houseNumber" placeholder="Podaj numer domu" value="<?php echo $_SESSION['house_number']?>">
+                            <input type="text" class="form-control" id="houseNumber" name="houseNumber" placeholder="Podaj numer domu" maxlength="10" value="<?php echo $_SESSION['house_number']?>">
                         </div>
                         <!-- Kod pocztowy -->
                         <div class="col-md-6">
@@ -173,7 +173,7 @@ if(!isset($_SESSION['login'])){
                         <!-- Miejscowość -->
                         <div class="col-md-6">
                             <label for="city" class="form-label">Miejscowość</label>
-                            <input type="text" class="form-control" id="city" name="city" placeholder="Podaj miejscowość" value="<?php echo $_SESSION['city']?>">
+                            <input type="text" class="form-control" id="city" name="city" placeholder="Podaj miejscowość" maxlength="50" value="<?php echo $_SESSION['city']?>">
                         </div>
                     </div>
                 </div>
