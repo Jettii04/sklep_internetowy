@@ -165,7 +165,7 @@ require_once("../../scripts/database.php");
                         <div class="container-md cart-item mb-2" id="'.$item['item_id'].'">
                         <div class="row mt-2 mb-2 d-flex align-items-center">
                         <div class="col-12 text-left">
-                        <h4>Id: '.$item['item_id'].'</h4>
+                        <h4>Id produktu: '.$item['item_id'].' <a href="https://chalimoniukmikolaj.infinityfreeapp.com/produkt/?item='.$item['item_id'].'"><h4>'.$item['name'].'</a></h4>
                         </div>
                         </div>
                         <div class="row mt-2 mb-2 d-flex align-items-center">
@@ -173,7 +173,7 @@ require_once("../../scripts/database.php");
                                 <img class="cart-item-img" src="data:image;base64,'.base64_encode($item['main_img']).'" alt="Zdjęcie produktu">
                                 </div>
                                 <div class="col-9 col-lg-6 text-end">
-                                    <a href="../produkt/?item='.$item['item_id'].'"><h4>'.$item['name'].'</h4></a>
+                                    <h4>'.$item['short_description'].'</h4>
                                 </div>
                                 <div class="col-3 col-lg-2 ms-2 ms-lg-0 mt-2 mt-lg-0">
                                     <h5>'.$item['price'].' zł</h5>
@@ -195,6 +195,11 @@ require_once("../../scripts/database.php");
                                         </svg>
                                     </a>
                                 </div>
+                        </div>
+                        <div class="row mt-2 mb-2 d-flex flex-wrap">
+                            <div class="col-12 m-2">
+                                '.$item['description'].'
+                            </div>
                         </div>
                         <div class="row mt-2 mb-2 d-flex flex-wrap">
                     ';
