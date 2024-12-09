@@ -187,7 +187,11 @@ require_once("../../scripts/database.php");
 
                     echo '<div class="container-md order-item mb-5">
                         <div class="row m-2">
-                            <div class="col-12" style="text-align: right;">
+                            <div class="col-3" style="text-align: left;">
+                                <h5>Zamówienie nr.</h5>
+                                '.$order['order_id'].'
+                            </div>
+                            <div class="col-9" style="text-align: right;">
                                 <span class="me-3">
                                     <a style="text-decoration: none" href="javascript:edit('."'".$order['order_id']."'".')">
                                         <svg width="32" height="32" viewBox="0 0 24 24" fill="#343C54" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
@@ -209,8 +213,8 @@ require_once("../../scripts/database.php");
                         </div>
                         <div class="row m-2" id="z'.$order['order_id'].'">
                             <div class="col-4">
-                            <h5>Zamówienie nr.</h5>
-                            '.$order['order_id'].'
+                            <h5>Data złożenia.</h5>
+                            '.$order['time'].'
                             </div>
                             <div class="col-4">
                             <h5>Urzytkownik</h5>
