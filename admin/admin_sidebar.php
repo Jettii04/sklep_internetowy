@@ -15,46 +15,52 @@
                 klienci
             </a>
         </li>
-        <li class="nav-item mb-1">
-            <a href="https://chalimoniukmikolaj.infinityfreeapp.com/admin/oceny/" class="nav-link">
-                Oceny
-            </a>
-        </li>
-        <li class="nav-item mb-1">
-            <a href="https://chalimoniukmikolaj.infinityfreeapp.com/admin/podstrony/" class="nav-link">
-                Podstrony
-            </a>
-        </li>
-        <li class="nav-item mb-1">
-            <a href="https://chalimoniukmikolaj.infinityfreeapp.com/admin/kategorie/" class="nav-link">
-                Kategorie
-            </a>
-        </li>
-        <li class="nav-item mb-1">
-            <a href="https://chalimoniukmikolaj.infinityfreeapp.com/admin/pracownicy/" class="nav-link">
-                Pracownicy
-            </a>
-        </li>
-        <li class="nav-item mb-1">
-            <a href="https://chalimoniukmikolaj.infinityfreeapp.com/admin/metody_dostawy" class="nav-link">
-                Metody dostawy
-            </a>
-        </li>
-        <li class="nav-item mb-1">
-            <a href="https://chalimoniukmikolaj.infinityfreeapp.com/admin/sposoby_platnosci" class="nav-link">
-                Sposoby płatności
-            </a>
-        </li>
-        <li class="nav-item mb-1">
-            <a href="https://chalimoniukmikolaj.infinityfreeapp.com/admin/statusy_zamowien" class="nav-link">
-                Statusy zamówień
-            </a>
-        </li>
-        <li class="nav-item mb-1">
-            <a href="https://chalimoniukmikolaj.infinityfreeapp.com/admin/admini" class="nav-link">
-                Admini
-            </a>
-        </li>
+        <?php if(isset($_SESSION['admin'])){
+            echo'
+            <li class="nav-item mb-1">
+                <a href="https://chalimoniukmikolaj.infinityfreeapp.com/admin/oceny/" class="nav-link">
+                    Oceny
+                </a>
+            </li>
+            <li class="nav-item mb-1">
+                <a href="https://chalimoniukmikolaj.infinityfreeapp.com/admin/podstrony/" class="nav-link">
+                    Podstrony
+                </a>
+            </li>
+            <li class="nav-item mb-1">
+                <a href="https://chalimoniukmikolaj.infinityfreeapp.com/admin/kategorie/" class="nav-link">
+                    Kategorie
+                </a>
+            </li>
+            <li class="nav-item mb-1">
+                <a href="https://chalimoniukmikolaj.infinityfreeapp.com/admin/pracownicy/" class="nav-link">
+                    Pracownicy
+                </a>
+            </li>
+            <li class="nav-item mb-1">
+                <a href="https://chalimoniukmikolaj.infinityfreeapp.com/admin/metody_dostawy" class="nav-link">
+                    Metody dostawy
+                </a>
+            </li>
+            <li class="nav-item mb-1">
+                <a href="https://chalimoniukmikolaj.infinityfreeapp.com/admin/sposoby_platnosci" class="nav-link">
+                    Sposoby płatności
+                </a>
+            </li>
+            <li class="nav-item mb-1">
+                <a href="https://chalimoniukmikolaj.infinityfreeapp.com/admin/statusy_zamowien" class="nav-link">
+                    Statusy zamówień
+                </a>
+            </li>
+            <li class="nav-item mb-1">
+                <a href="https://chalimoniukmikolaj.infinityfreeapp.com/admin/admini" class="nav-link">
+                    Admini
+                </a>
+            </li>
+
+            ';
+        }
+        ?>
         <li class="nav-item mb-1">
             <a href="javascript:logout()" class="nav-link" style="color: red;">
                 Wyloguj
