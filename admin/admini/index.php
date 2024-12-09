@@ -144,7 +144,7 @@ require_once("../../scripts/database.php");
                 $noi->execute();
                 $nOfitems = $noi->fetchColumn();
 
-                $nOnpage=4;
+                $nOnpage=20;
 
                 if($nOfitems%$nOnpage!=0){
                     $nOfpages=floor($nOfitems/$nOnpage)+1;

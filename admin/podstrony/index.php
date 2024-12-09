@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['login'])){
-    header("location: ../");
+    header("location: ../../");
 }
 require_once("../../scripts/database.php");
 ?>
@@ -9,7 +9,7 @@ require_once("../../scripts/database.php");
 <html lang="pl">
 <head>
     <meta charset="utf-8">
-    <title>Zamówienia</title>
+    <title>Podstrony</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="your-project-dir/icon-font/lineicons.css" rel="stylesheet" >
     <link href="https://cdn.lineicons.com/5.0/lineicons.css" rel="stylesheet" >
@@ -88,132 +88,126 @@ require_once("../../scripts/database.php");
             border-width: 1px;
             color: black;
         }
+        .table{
+        display: block !important;
+        overflow-x: auto !important;
+        width: 100% !important;
+        }
     </style>
 </head>
 <body>
 <!-- navbar -->
-<nav class="navbar navbar-expand-md navbar-dark bg-black sticky-top">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="../../">
-        <img src="../../assets/images/biden.jpg" style="width: 30px; height: 30px; object-fit: cover;" width="30" height="30" alt="">    
-        Greg.inc</a>
-        
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <?php 
-                if(isset($_SESSION['login'])){
-                    echo'
-                        <li class="nav-item dropdown me-2">
-                        <a class="nav-link" href="../ulubione">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M11.8227 4.77124L12 4.94862L12.1773 4.77135C14.4244 2.52427 18.0676 2.52427 20.3147 4.77134C22.5618 7.01842 22.5618 10.6616 20.3147 12.9087L13.591 19.6324C12.7123 20.5111 11.2877 20.5111 10.409 19.6324L3.6853 12.9086C1.43823 10.6615 1.43823 7.01831 3.6853 4.77124C5.93237 2.52417 9.5756 2.52417 11.8227 4.77124ZM10.762 5.8319C9.10073 4.17062 6.40725 4.17062 4.74596 5.8319C3.08468 7.49319 3.08468 10.1867 4.74596 11.848L11.4697 18.5718C11.7625 18.8647 12.2374 18.8647 12.5303 18.5718L19.254 11.8481C20.9153 10.1868 20.9153 7.49329 19.254 5.83201C17.5927 4.17072 14.8993 4.17072 13.238 5.83201L12.5304 6.53961C12.3897 6.68026 12.199 6.75928 12 6.75928C11.8011 6.75928 11.6104 6.68026 11.4697 6.53961L10.762 5.8319Z" fill="#ffffff"/>
-                            </svg>
-                        </a>
-                        </li>
-                        <li class="nav-item dropdown me-2">
-                        <a class="nav-link" href="../../koszyk/">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M2.31641 3.25C1.90219 3.25 1.56641 3.58579 1.56641 4C1.56641 4.41421 1.90219 4.75 2.31641 4.75H3.49696C3.87082 4.75 4.18759 5.02534 4.23965 5.39556L5.49371 14.3133C5.6499 15.424 6.60021 16.25 7.72179 16.25L18.0664 16.25C18.4806 16.25 18.8164 15.9142 18.8164 15.5C18.8164 15.0858 18.4806 14.75 18.0664 14.75L7.72179 14.75C7.34793 14.75 7.03116 14.4747 6.9791 14.1044L6.85901 13.2505H17.7114C18.6969 13.2505 19.5678 12.6091 19.8601 11.668L21.7824 5.48032C21.8531 5.25268 21.8114 5.00499 21.6701 4.81305C21.5287 4.62112 21.3045 4.50781 21.0662 4.50781H5.51677C5.14728 3.75572 4.37455 3.25 3.49696 3.25H2.31641ZM5.84051 6.00781L6.64807 11.7505H17.7114C18.0399 11.7505 18.3302 11.5367 18.4277 11.223L20.0478 6.00781H5.84051Z" fill="#ffffff"/>
-                            <path d="M7.78418 17.75C6.81768 17.75 6.03418 18.5335 6.03418 19.5C6.03418 20.4665 6.81768 21.25 7.78418 21.25C8.75068 21.25 9.53428 20.4665 9.53428 19.5C9.53428 18.5335 8.75068 17.75 7.78418 17.75Z" fill="#ffffff"/>
-                            <path d="M14.5703 19.5C14.5703 18.5335 15.3538 17.75 16.3203 17.75C17.2868 17.75 18.0704 18.5335 18.0704 19.5C18.0704 20.4665 17.2869 21.25 16.3204 21.25C15.3539 21.25 14.5703 20.4665 14.5703 19.5Z" fill="#ffffff"/>
-                            </svg>
-                        </a>
-                        </li>
-                        <li class="nav-item d-block d-md-none">
-                            <a class="nav-link" href="../">Konto</a>
-                        </li>
-                        <li class="nav-item d-block d-md-none">
-                            <a class="nav-link" href="">Zamówienia</a>
-                        </li>
-                        <li class="nav-item d-block d-md-none">
-                            <a class="nav-link" href="javascript:logout('.')">
-                                <button class="btn btn btn-outline-secondary"  type="button">Wyloguj</button>
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown d-none d-md-block">
-                            <button class="btn btn-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <svg width="24" height="24" viewBox="0 0 25 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M16.4337 6.35C16.4337 8.74 14.4937 10.69 12.0937 10.69L12.0837 10.68C9.69365 10.68 7.74365 8.73 7.74365 6.34C7.74365 3.95 9.70365 2 12.0937 2C14.4837 2 16.4337 3.96 16.4337 6.35ZM14.9337 6.34C14.9337 4.78 13.6637 3.5 12.0937 3.5C10.5337 3.5 9.25365 4.78 9.25365 6.34C9.25365 7.9 10.5337 9.18 12.0937 9.18C13.6537 9.18 14.9337 7.9 14.9337 6.34Z" fill="#ffffff"/>
-                                <path d="M12.0235 12.1895C14.6935 12.1895 16.7835 12.9395 18.2335 14.4195V14.4095C20.2801 16.4956 20.2739 19.2563 20.2735 19.4344L20.2735 19.4395C20.2635 19.8495 19.9335 20.1795 19.5235 20.1795H19.5135C19.0935 20.1695 18.7735 19.8295 18.7735 19.4195C18.7735 19.3695 18.7735 17.0895 17.1535 15.4495C15.9935 14.2795 14.2635 13.6795 12.0235 13.6795C9.78346 13.6795 8.05346 14.2795 6.89346 15.4495C5.27346 17.0995 5.27346 19.3995 5.27346 19.4195C5.27346 19.8295 4.94346 20.1795 4.53346 20.1795C4.17346 20.1995 3.77346 19.8595 3.77346 19.4495L3.77345 19.4448C3.77305 19.2771 3.76646 16.506 5.81346 14.4195C7.26346 12.9395 9.35346 12.1895 12.0235 12.1895Z" fill="#ffffff"/>
-                                </svg>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="../">Konto</a></li>
-                                <li><a class="dropdown-item" href="">Zamówienia</a></li>
-                                <li><a class="" href="javascript:logout('.')">
-                                <button class="btn btn btn-outline-secondary ms-2"  type="button">Wyloguj</button>
-                                </a></li>
-                            </ul>
-                        </li>
-                        ';
-                }else{
-                    echo  '
-                        <li class="nav-item dropdown me-2">
-                        <a class="nav-link" href="../../koszyk/">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M2.31641 3.25C1.90219 3.25 1.56641 3.58579 1.56641 4C1.56641 4.41421 1.90219 4.75 2.31641 4.75H3.49696C3.87082 4.75 4.18759 5.02534 4.23965 5.39556L5.49371 14.3133C5.6499 15.424 6.60021 16.25 7.72179 16.25L18.0664 16.25C18.4806 16.25 18.8164 15.9142 18.8164 15.5C18.8164 15.0858 18.4806 14.75 18.0664 14.75L7.72179 14.75C7.34793 14.75 7.03116 14.4747 6.9791 14.1044L6.85901 13.2505H17.7114C18.6969 13.2505 19.5678 12.6091 19.8601 11.668L21.7824 5.48032C21.8531 5.25268 21.8114 5.00499 21.6701 4.81305C21.5287 4.62112 21.3045 4.50781 21.0662 4.50781H5.51677C5.14728 3.75572 4.37455 3.25 3.49696 3.25H2.31641ZM5.84051 6.00781L6.64807 11.7505H17.7114C18.0399 11.7505 18.3302 11.5367 18.4277 11.223L20.0478 6.00781H5.84051Z" fill="#ffffff"/>
-                            <path d="M7.78418 17.75C6.81768 17.75 6.03418 18.5335 6.03418 19.5C6.03418 20.4665 6.81768 21.25 7.78418 21.25C8.75068 21.25 9.53428 20.4665 9.53428 19.5C9.53428 18.5335 8.75068 17.75 7.78418 17.75Z" fill="#ffffff"/>
-                            <path d="M14.5703 19.5C14.5703 18.5335 15.3538 17.75 16.3203 17.75C17.2868 17.75 18.0704 18.5335 18.0704 19.5C18.0704 20.4665 17.2869 21.25 16.3204 21.25C15.3539 21.25 14.5703 20.4665 14.5703 19.5Z" fill="#ffffff"/>
-                            </svg>
-                        </a>
-                        </li>
-                        <button class="btn btn-outline-success me-2 d-none d-md-block" type="button" onclick="login();">Zaloguj się</button>
-                        <button class="btn btn btn-outline-secondary d-none d-md-block" type="button" onclick="register();">Zarejestruj</button>
-                        <li class="nav-item d-block d-md-none">
-                            <a class="nav-link" href="javascript:logout('.')">
-                                <button class="btn btn-outline-success" type="button" onclick="login();">Zaloguj się</button>
-                            </a>
-                        </li>
-                        <li class="nav-item d-block d-md-none">
-                            <a class="nav-link" href="javascript:logout('.')">
-                                <button class="btn btn btn-outline-secondary" type="button" onclick="register();">Zarejestruj</button>
-                            </a>
-                        </li>
-                        ';
-                }
-                ?>
-            </ul>
-        </div>
-    </div>
-</nav>
+<?php include("../admin_navbar.php")?>
 
 <div class="container-fluid p-0 d-flex h-100">
 
     <!-- Sidebar -->
     <?php include("../admin_sidebar.php")?>
 
-    <div class="bg-light flex-fill">
+    <div class="bg-light flex-fill table-responsive">
         <!-- Sidebar po zmniejszeniu -->
-      <div class="p-2 d-md-none d-flex text-white bg-dark">
-          <a href="#" class="text-white" data-bs-toggle="offcanvas" data-bs-target="#bdSidebar">
-              <i class="fa-solid fa-bars"></i>
-          </a>
-          <span class="nav-item me-2">
-                <a href="../dane/" class="nav-link">
-                    Dane
-                </a>
-          </span>
-            <span class="nav-item me-2">
-                <a href="../ulubione/" class="nav-link">
-                    Ulubione
-                </a>
-            </span>
-            <span class="nav-item me-2">
-                <a href="javascript:logout()" class="nav-link" style="color: red;">
-                    Wyloguj
-                </a>
-            </span>
-      </div>
+        <?php include("../admin_sidebartop.php")?>
+        
         <!-- Ciało storny -->
         <div class="p-4">
+            <form method="get" action="">
             <div style="color: black">
-            <h2>Zamówienia</h2>    
+            <h2>Podstrony</h2> 
+            <div class="d-flex me-auto ms-auto">
+            <input class="form-control me-2" type="search" name="search" placeholder="Szukaj wedłóg nagłówka..." aria-label="Search" value="<?php if(isset($_GET['search'])){ echo $_GET['search'];}?>">
+            <button class="btn btn-primary" type="submit">Szukaj</button>   
+            </div>
             <hr>
             </div>
+
+            <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nagłówek</th>
+                <th scope="col">Treść</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
             
+            <?php
+
+                $noi = $pdo->prepare("SELECT COUNT(*) FROM info_sites");
+                $noi->execute();
+                $nOfitems = $noi->fetchColumn();
+
+                $nOnpage=20;
+
+                if($nOfitems%$nOnpage!=0){
+                    $nOfpages=floor($nOfitems/$nOnpage)+1;
+                }else{
+                    $nOfpages=floor($nOfitems/$nOnpage);
+                }
+
+                $page=1;
+                $offset=0;
+                if(isset($_GET['page'])){
+                    $page=htmlspecialchars($_GET['page']);
+                    $offset=($page-1)*$nOnpage;
+                }
+
+                try {
+                    $categories = $pdo->prepare("SELECT * FROM info_sites where header like '%".$_GET['search']."%' ORDER BY site_id ASC LIMIT ".$nOnpage." OFFSET ".$offset);
+                    $categories->execute();
+                }catch (PDOException $e) {
+                    echo 'Nie udało się odczytać danych z bazy';
+                    //exit();
+                }
+
+                foreach($categories as $category){
+                    echo '
+                        <tr>
+                            <td>'.$category['site_id'].'</td>
+                            <td>'.$category['header'].'</td>
+                            <td>'.$category['body'].'</td>
+                            <td>
+                                <a href="javascript:edit('."'".$category['site_id']."'".')">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="#343C54" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M20.8749 2.51272C20.1915 1.8293 19.0835 1.8293 18.4001 2.51272L13.2418 7.67095C12.879 8.03379 12.6511 8.50974 12.5959 9.0199L12.4069 10.7668C12.3824 10.9926 12.4616 11.2173 12.6222 11.3778C12.7827 11.5384 13.0074 11.6176 13.2332 11.5931L14.9801 11.4041C15.4903 11.3489 15.9662 11.121 16.3291 10.7582L21.4873 5.59994C22.1707 4.91652 22.1707 3.80848 21.4873 3.12506L20.8749 2.51272ZM18.5981 4.43601L19.564 5.40191L15.2684 9.69751C15.1474 9.81846 14.9888 9.89443 14.8187 9.91283L13.9984 10.0016L14.0872 9.18126C14.1056 9.01121 14.1815 8.85256 14.3025 8.73161L18.5981 4.43601Z" fill="#343C54"/>
+                                    <path d="M5.5 3.25H15.5411L14.0411 4.75H5.5C5.08579 4.75 4.75 5.08579 4.75 5.5V18.5C4.75 18.9142 5.08579 19.25 5.5 19.25H18.5C18.9142 19.25 19.25 18.9142 19.25 18.5V9.95823L20.75 8.45823V18.5C20.75 19.7426 19.7426 20.75 18.5 20.75H5.5C4.25736 20.75 3.25 19.7426 3.25 18.5V5.5C3.25 4.25736 4.25736 3.25 5.5 3.25Z" fill="#343C54"/>
+                                    </svg>
+                                </a>
+                            </td>
+                            <td>
+                            <a href="javascript:remove('."'".$category['site_id']."'".')">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="#373737" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
+                                <path d="M14.7223 12.7585C14.7426 12.3448 14.4237 11.9929 14.01 11.9726C13.5963 11.9522 13.2444 12.2711 13.2241 12.6848L12.9999 17.2415C12.9796 17.6552 13.2985 18.0071 13.7122 18.0274C14.1259 18.0478 14.4778 17.7289 14.4981 17.3152L14.7223 12.7585Z" fill="#373737"/>
+                                <path d="M9.98802 11.9726C9.5743 11.9929 9.25542 12.3448 9.27577 12.7585L9.49993 17.3152C9.52028 17.7289 9.87216 18.0478 10.2859 18.0274C10.6996 18.0071 11.0185 17.6552 10.9981 17.2415L10.774 12.6848C10.7536 12.2711 10.4017 11.9522 9.98802 11.9726Z" fill="#373737"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M10.249 2C9.00638 2 7.99902 3.00736 7.99902 4.25V5H5.5C4.25736 5 3.25 6.00736 3.25 7.25C3.25 8.28958 3.95503 9.16449 4.91303 9.42267L5.54076 19.8848C5.61205 21.0729 6.59642 22 7.78672 22H16.2113C17.4016 22 18.386 21.0729 18.4573 19.8848L19.085 9.42267C20.043 9.16449 20.748 8.28958 20.748 7.25C20.748 6.00736 19.7407 5 18.498 5H15.999V4.25C15.999 3.00736 14.9917 2 13.749 2H10.249ZM14.499 5V4.25C14.499 3.83579 14.1632 3.5 13.749 3.5H10.249C9.83481 3.5 9.49902 3.83579 9.49902 4.25V5H14.499ZM5.5 6.5C5.08579 6.5 4.75 6.83579 4.75 7.25C4.75 7.66421 5.08579 8 5.5 8H18.498C18.9123 8 19.248 7.66421 19.248 7.25C19.248 6.83579 18.9123 6.5 18.498 6.5H5.5ZM6.42037 9.5H17.5777L16.96 19.7949C16.9362 20.191 16.6081 20.5 16.2113 20.5H7.78672C7.38995 20.5 7.06183 20.191 7.03807 19.7949L6.42037 9.5Z" fill="#373737"/>
+                                </svg>
+                            </a>
+                            </td>
+                        </tr>
+                    ';
+                }
+            ?>
+
+            </tbody>
+            </table>
+        
+            <div class="mt-3" style="text-align: center;">
+                <?php 
+                for($j=1;$j<=$nOfpages;$j++){
+                    if($page==$j){
+                        echo '
+                        <input type="submit" class="btn btn-dark" name="page" value="'.$j.'">
+                        ';
+                    }else{
+                        echo '
+                        <input type="submit" class="btn btn-outline-dark" name="page" value="'.$j.'">
+                        ';
+                    }
+                }
+                ?>
+            </div>
+            </form>
         </div>
     </div>
 </div>
@@ -244,7 +238,23 @@ require_once("../../scripts/database.php");
         function register(){
             window.location.assign("../../rejestr/");
         }
-        
+        function remove(item){
+            var id=item;
+            alert();
+            $.ajax({
+                url: "../../scripts/remove_category.php",
+                method: 'POST',
+                data: {
+                    category_id: id
+                }
+            }).done(function( data ) {
+                  location.reload();
+            });
+        }
+        function edit(item){
+            var login=item;
+            window.location.assign("edit/?login="+login);
+        }
         </script>
 </body>
 </html>

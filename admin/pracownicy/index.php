@@ -112,7 +112,7 @@ require_once("../../scripts/database.php");
         <div class="p-4">
             <form method="get" action="">
             <div style="color: black">
-            <h2>Administratorzy</h2> 
+            <h2>Pracownicy</h2> 
             <div class="d-flex me-auto ms-auto">
             <input class="form-control me-2" type="search" name="search" placeholder="Szukaj wedłóg loginu..." aria-label="Search" value="<?php if(isset($_GET['search'])){ echo $_GET['search'];}?>">
             <button class="btn btn-primary" type="submit">Szukaj</button>   
@@ -140,11 +140,11 @@ require_once("../../scripts/database.php");
             
             <?php
 
-                $noi = $pdo->prepare("SELECT COUNT(*) FROM users where admin = 1");
+                $noi = $pdo->prepare("SELECT COUNT(*) FROM users where employee = 1");
                 $noi->execute();
                 $nOfitems = $noi->fetchColumn();
 
-                $nOnpage=4;
+                $nOnpage=20;
 
                 if($nOfitems%$nOnpage!=0){
                     $nOfpages=floor($nOfitems/$nOnpage)+1;
