@@ -239,12 +239,11 @@ require_once("../../scripts/database.php");
         }
         function remove(item){
             var id=item;
-            alert();
             $.ajax({
-                url: "../../scripts/remove_category.php",
+                url: "../../scripts/remove_payment.php",
                 method: 'POST',
                 data: {
-                    category_id: id
+                    id: id
                 }
             }).done(function( data ) {
                   location.reload();
@@ -252,7 +251,7 @@ require_once("../../scripts/database.php");
         }
         function edit(item){
             var login=item;
-            window.location.assign("edit/?login="+login);
+            window.location.assign("edit/?id="+login);
         }
         </script>
 </body>

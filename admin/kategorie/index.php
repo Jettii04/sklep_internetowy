@@ -239,7 +239,6 @@ require_once("../../scripts/database.php");
         }
         function remove(item){
             var id=item;
-            alert();
             $.ajax({
                 url: "../../scripts/remove_category.php",
                 method: 'POST',
