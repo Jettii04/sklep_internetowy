@@ -126,6 +126,7 @@ require_once("../../scripts/database.php");
                 <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Nazwa</th>
+                <th scope="col">Cena</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
                 </tr>
@@ -166,6 +167,7 @@ require_once("../../scripts/database.php");
                         <tr>
                             <td>'.$category['delivery_id'].'</td>
                             <td>'.$category['name'].'</td>
+                            <td>'.$category['price'].' zł</td>
                             <td>
                                 <a href="javascript:edit('."'".$category['delivery_id']."'".')">
                                     <svg width="32" height="32" viewBox="0 0 24 24" fill="#343C54" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
@@ -239,12 +241,11 @@ require_once("../../scripts/database.php");
         }
         function remove(item){
             var id=item;
-            alert();
             $.ajax({
-                url: "../../scripts/remove_category.php",
+                url: "../../scripts/remove_delivery.php",
                 method: 'POST',
                 data: {
-                    category_id: id
+                    delivery_id: id
                 }
             }).done(function( data ) {
                   location.reload();
@@ -252,7 +253,7 @@ require_once("../../scripts/database.php");
         }
         function edit(item){
             var login=item;
-            window.location.assign("edit/?login="+login);
+            window.location.assign("edit/?id="+login);
         }
         </script>
 </body>
