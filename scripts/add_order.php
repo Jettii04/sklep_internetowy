@@ -35,11 +35,12 @@ if(isset($_SESSION['login'])){
         'house' => $_SESSION['Fhouse_number'],
         'pay' => $_COOKIE['payment_method'],
         'deliv' => $_COOKIE['delivery_method'],
-        'order_id'=> $order
+        'order_id'=> $order,
+        'time' => date("Y-m-d H:i:s")
     ];
     // tworzenie zamówienia
     try {
-        $c = $pdo->prepare("INSERT INTO orders (order_id,user,order_status,postal_code,city,road,house_number,payment_method,delivery_method) VALUES (:order_id,:user,:order_status,:postal,:city,:road,:house,:pay,:deliv)");
+        $c = $pdo->prepare("INSERT INTO orders (order_id,user,order_status,postal_code,city,road,house_number,payment_method,delivery_method,time) VALUES (:order_id,:user,:order_status,:postal,:city,:road,:house,:pay,:deliv,:time)");
         $c->execute($data);
     }catch (PDOException $e) {
         echo 'Wystąpił błąd';

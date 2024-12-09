@@ -57,16 +57,47 @@ if((!isset($_SESSION['admin']) || (isset($_SESSION['admin'])&&$_SESSION['admin']
                     </a>
                     <?php
                     if($_SESSION['admin']==1){
-                    echo  '<a href="podstrony/" class="col-12 col-md-4" >
+                    echo  '<a href="https://chalimoniukmikolaj.infinityfreeapp.com/admin/oceny/" class="col-12 col-md-4" >
+                        <div class="menu-big-link" style="color: black;">
+                            <h4>Oceny</h4>
+                        </div>
+                    </a>
+                    <a href="https://chalimoniukmikolaj.infinityfreeapp.com/admin/podstrony/" class="col-12 col-md-4" >
                         <div class="menu-big-link" style="color: black;">
                             <h4>Podstrony</h4>
                         </div>
                     </a>
-                    <a href="pracownicy/" class="col-12 col-md-4" >
+                    <a href="https://chalimoniukmikolaj.infinityfreeapp.com/admin/kategorie/" class="col-12 col-md-4" >
                         <div class="menu-big-link" style="color: black;">
-                            <h4>Podstrony</h4>
+                            <h4>Kategorie</h4>
                         </div>
-                    </a>';
+                    </a>
+                    <a href="https://chalimoniukmikolaj.infinityfreeapp.com/admin/pracownicy/" class="col-12 col-md-4" >
+                        <div class="menu-big-link" style="color: black;">
+                            <h4>Pracownicy</h4>
+                        </div>
+                    </a>
+                    <a href="https://chalimoniukmikolaj.infinityfreeapp.com/admin/metody_dostawy/" class="col-12 col-md-4" >
+                        <div class="menu-big-link" style="color: black;">
+                            <h4>Metody dostawy</h4>
+                        </div>
+                    </a>
+                    <a href="https://chalimoniukmikolaj.infinityfreeapp.com/admin/sposoby_platnosci/" class="col-12 col-md-4" >
+                        <div class="menu-big-link" style="color: black;">
+                            <h4>Sposoby płatności</h4>
+                        </div>
+                    </a>
+                    <a href="https://chalimoniukmikolaj.infinityfreeapp.com/admin/statusy_zamowien/" class="col-12 col-md-4" >
+                        <div class="menu-big-link" style="color: black;">
+                            <h4>Statusy zamówień</h4>
+                        </div>
+                    </a>
+                    <a href="https://chalimoniukmikolaj.infinityfreeapp.com/admin/admini/" class="col-12 col-md-4" >
+                        <div class="menu-big-link" style="color: black;">
+                            <h4>Admini</h4>
+                        </div>
+                    </a>
+                    ';
                     }
                     ?>
                     <a href="javascript:logout()" class="col-12 col-md-4" style="color:red">
