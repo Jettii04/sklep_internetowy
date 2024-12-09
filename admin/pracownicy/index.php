@@ -1,7 +1,7 @@
 <?php
 session_start();
-if(!isset($_SESSION['login'])){
-    header("location: ../../");
+if(!isset($_SESSION['admin']) || (isset($_SESSION['admin'])&&$_SESSION['admin']==0)){
+    header("location: https://chalimoniukmikolaj.infinityfreeapp.com/");
 }
 require_once("../../scripts/database.php");
 ?>
