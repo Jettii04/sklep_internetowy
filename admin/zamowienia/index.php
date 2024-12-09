@@ -101,26 +101,8 @@ require_once("../../scripts/database.php");
 
     <div class="bg-light flex-fill">
         <!-- Sidebar po zmniejszeniu -->
-      <div class="p-2 d-md-none d-flex text-white bg-dark">
-          <a href="#" class="text-white" data-bs-toggle="offcanvas" data-bs-target="#bdSidebar">
-              <i class="fa-solid fa-bars"></i>
-          </a>
-          <span class="nav-item me-2">
-                <a href="../dane/" class="nav-link">
-                    Dane
-                </a>
-          </span>
-            <span class="nav-item me-2">
-                <a href="../ulubione/" class="nav-link">
-                    Ulubione
-                </a>
-            </span>
-            <span class="nav-item me-2">
-                <a href="javascript:logout()" class="nav-link" style="color: red;">
-                    Wyloguj
-                </a>
-            </span>
-      </div>
+        <?php include("../admin_sidebartop.php")?>
+        
         <!-- Ciało storny -->
         <div class="p-4">
             <form method="get" action="">
