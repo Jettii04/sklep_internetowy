@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once("../scripts/database.php");
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -59,29 +60,31 @@ session_start();
 <body>
 <form action="../katalog/" method="get">
 <!-- navbar -->
-<?php include("../../scripts/header.php")?>
+<?php include("../scripts/header.php")?>
 
 <div class="container-fluid p-0 d-flex h-100">
 
     <div class="bg-light flex-fill">
-        <!-- Sidebar po zmniejszeniu -->
-        <div class="p-2 d-md-none d-flex text-white bg-dark">
-            <div class="nav-item mb-1">
-                <a href="" class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#settings" aria-expanded="false" aria-controls="settings">
-                    <span class="topic">Settings </span>
-                </a>
-                <ul id="settings" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                    <li class="sidebar-item">
-                        <a href="" class="nav-link">
-                            <span class=""> Login</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        <?php
+        try {
+            $q = $pdo->prepare("SELECT * FROM info_sites where site_id=".htmlspecialchars($_GET['id']));
+            $q->execute();
+            $site = $q->fetch(PDO::FETCH_ASSOC);
+        }catch (PDOException $e) {
+            echo 'Nie udało się odczytać danych z bazy';
+            //exit();
+        }
+        
+        ?>
         <!-- Ciało storny -->
         <div class="p-4">
-            
+            <div class="ms-4" style="color: black">
+                <h2><?php echo $site['header']?></h2>    
+                <hr>
+            </div>
+            <div class="container" style="color: black; font-size:20px">
+            <?php echo $site['body']?>
+            </div>
         </div>
     </div>
 </div>

@@ -26,9 +26,22 @@
         <div class="col-lg-3 col-md-6 mb-4">
           <h5 class="mb-3" style="letter-spacing: 2px; color: #7f4722;">firma</h5>
           <ul class="list-unstyled mb-0">
-            <li class="mb-1">
-              <a href="" style="color: #4f4f4f;">o nas</a>
-            </li>
+            <?php
+            try {
+                $qs = $pdo->prepare("SELECT * FROM info_sites");
+                $qs->execute();
+            }catch (PDOException $e) {
+                echo 'Nie udało się odczytać danych z bazy';
+                //exit();
+            }
+            foreach($qs as $site){
+              echo'
+              <li class="mb-1">
+              <a href="https://chalimoniukmikolaj.infinityfreeapp.com/informacje/?id='.$site['site_id'].'" style="color: #4f4f4f;">'.$site['header'].'</a>
+              </li>
+              ';
+            }
+            ?>
           </ul>
         </div>
         <div class="col-lg-3 col-md-6 mb-4">
