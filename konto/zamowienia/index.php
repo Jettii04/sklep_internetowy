@@ -240,6 +240,10 @@ require_once("../../scripts/database.php");
                                 '.$order['order_id'].'
                                 </div>
                                 <div class="col-4">
+                                <h5>Data złożenia.</h5>
+                                '.$order['time'].'
+                                </div>
+                                <div class="col-4">
                                 <h5>Płatność</h5>
                                 '.$payment.'
                                 </div>
