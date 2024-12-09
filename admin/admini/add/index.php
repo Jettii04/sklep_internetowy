@@ -18,7 +18,7 @@ if(isset($_POST['submit'])){
             "postal_code"=>htmlspecialchars($_POST['postal_code']),
             "house_number"=>htmlspecialchars($_POST['house_number']),
         ];
-        $update = $pdo->prepare("UPDATE users SET login=:login, email=:email, name=:name, surname=:surname, phone=:phone, postal_code=:postal_code, city=:city, road=:road, house_number=:house_number where login='".htmlspecialchars($_GET['login'])."'");
+        $update = $pdo->prepare("INSERT INTO users (login,email,name,surname,phone,road,city,postal_code,house_number,admin) values (:login,:email,:name,:surname,:phone,:road,:city,:postal_code,:house_number,'1')");
         $update->execute($data);
     }catch (PDOException $e) {
         echo 'Nie udało się odczytać danych z bazy';
@@ -155,33 +155,17 @@ if(isset($_POST['submit'])){
                 </tr>
             </thead>
             <tbody>
-            
-            <?php
-                try {
-                    $admins = $pdo->prepare("SELECT * FROM users where admin = 1 and login='".htmlspecialchars($_GET['login'])."'");
-                    $admins->execute();
-                }catch (PDOException $e) {
-                    echo 'Nie udało się odczytać danych z bazy';
-                    //exit();
-                }
-
-                foreach($admins as $admin){
-                    echo '
-                        <tr>
-                            <td><input type="text" id="login" name="login" class="form-control" placeholder="Login..." value="'.$admin['login'].'"></td>
-                            <td><input type="text" id="email" name="email" class="form-control" placeholder="Email..." value="'.$admin['email'].'"></td>
-                            <td><input type="text" id="name" name="name" class="form-control" placeholder="Imię..." value="'.$admin['name'].'"></td>
-                            <td><input type="text" id="surname" name="surname" class="form-control" placeholder="Nazwisko..." value="'.$admin['surname'].'"></td>
-                            <td><input type="text" id="phone" name="phone" class="form-control" placeholder="Nr. Tel..." value="'.$admin['phone'].'"></td>
-                            <td><input type="text" id="postal_code" name="postal_code" class="form-control" placeholder="Kod pocztowy..." value="'.$admin['postal_code'].'"></td>
-                            <td><input type="text" id="city" name="city" class="form-control" placeholder="Miasto..." value="'.$admin['city'].'"></td>
-                            <td><input type="text" id="road" name="road" class="form-control" placeholder="Ulica..." value="'.$admin['road'].'"></td>
-                            <td><input type="text" id="house_number" name="house_number" class="form-control" placeholder="Nr. Budynku..." value="'.$admin['house_number'].'"></td>
-                        </tr>
-                    ';
-                }
-            ?>
-
+                <tr>
+                    <td><input type="text" id="login" name="login" class="form-control" placeholder="Login..." value=""></td>
+                    <td><input type="text" id="email" name="email" class="form-control" placeholder="Email..." value=""></td>
+                    <td><input type="text" id="name" name="name" class="form-control" placeholder="Imię..." value=""></td>
+                    <td><input type="text" id="surname" name="surname" class="form-control" placeholder="Nazwisko..." value=""></td>
+                    <td><input type="text" id="phone" name="phone" class="form-control" placeholder="Nr. Tel..." value=""></td>
+                    <td><input type="text" id="postal_code" name="postal_code" class="form-control" placeholder="Kod pocztowy..." value=""></td>
+                    <td><input type="text" id="city" name="city" class="form-control" placeholder="Miasto..." value=""></td>
+                    <td><input type="text" id="road" name="road" class="form-control" placeholder="Ulica..." value=""></td>
+                    <td><input type="text" id="house_number" name="house_number" class="form-control" placeholder="Nr. Budynku..." value=""></td>
+                </tr>
             </tbody>
             </table>
         
@@ -218,23 +202,6 @@ if(isset($_POST['submit'])){
 
         function register(){
             window.location.assign("../../rejestr/");
-        }
-        function remove(item){
-            var id=item;
-            alert();
-            $.ajax({
-                url: "../../scripts/remove_user.php",
-                method: 'POST',
-                data: {
-                    category_id: id
-                }
-            }).done(function( data ) {
-                  location.reload();
-            });
-        }
-        function edit(item){
-            var login=item;
-            window.location.assign("edit/?login="+login);
         }
         </script>
 </body>
