@@ -165,7 +165,7 @@ require_once("../../scripts/database.php");
                         <div class="container-md cart-item mb-2" id="'.$item['item_id'].'">
                         <div class="row mt-2 mb-2 d-flex align-items-center">
                         <div class="col-12 text-left">
-                        <h4>Id produktu: '.$item['item_id'].' <a href="https://chalimoniukmikolaj.infinityfreeapp.com/produkt/?item='.$item['item_id'].'"><h4>'.$item['name'].'</a></h4>
+                        <h4>Id produktu: '.$item['item_id'].' Kategoria: '.$item['category'].' <a href="https://chalimoniukmikolaj.infinityfreeapp.com/produkt/?item='.$item['item_id'].'"><h4>'.$item['name'].'</a></h4>
                         </div>
                         </div>
                         <div class="row mt-2 mb-2 d-flex align-items-center">
@@ -187,7 +187,7 @@ require_once("../../scripts/database.php");
                                     </a>
                                 </div>
                                 <div class="col col-lg-1 mt-2 mt-lg-0">
-                                    <a href="javascript:remove_order('."'".$item['item_id']."'".')">
+                                    <a href="javascript:remove('.$item['item_id'].')">
                                         <svg width="32" height="32" viewBox="0 0 24 24" fill="#373737" xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
                                         <path d="M14.7223 12.7585C14.7426 12.3448 14.4237 11.9929 14.01 11.9726C13.5963 11.9522 13.2444 12.2711 13.2241 12.6848L12.9999 17.2415C12.9796 17.6552 13.2985 18.0071 13.7122 18.0274C14.1259 18.0478 14.4778 17.7289 14.4981 17.3152L14.7223 12.7585Z" fill="#373737"/>
                                         <path d="M9.98802 11.9726C9.5743 11.9929 9.25542 12.3448 9.27577 12.7585L9.49993 17.3152C9.52028 17.7289 9.87216 18.0478 10.2859 18.0274C10.6996 18.0071 11.0185 17.6552 10.9981 17.2415L10.774 12.6848C10.7536 12.2711 10.4017 11.9522 9.98802 11.9726Z" fill="#373737"/>
@@ -259,7 +259,7 @@ require_once("../../scripts/database.php");
         // funkcja ajax uruchamiająca plik logout.php
         function logout(){
             $.ajax({
-                url: "../../scripts/logout.php",
+                url: "../scripts/logout.php",
             }).done(function( data ) {
                 location.reload();
             });
@@ -274,12 +274,11 @@ require_once("../../scripts/database.php");
         }
         function remove(item){
             var id=item;
-            alert();
             $.ajax({
-                url: "../../scripts/remove_category.php",
+                url: "../../scripts/remove_item.php",
                 method: 'POST',
                 data: {
-                    category_id: id
+                    item_id: id
                 }
             }).done(function( data ) {
                   location.reload();
@@ -287,7 +286,7 @@ require_once("../../scripts/database.php");
         }
         function edit(item){
             var login=item;
-            window.location.assign("edit/?login="+login);
+            window.location.assign("edit/?item_id="+login);
         }
         </script>
 </body>
