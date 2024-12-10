@@ -140,7 +140,7 @@ require_once("../../scripts/database.php");
                     'user' => $_SESSION['login'],
                 ];
                 try {
-                    $orders = $pdo->prepare("SELECT * FROM orders where user like '%".htmlspecialchars($_GET['search'])."%' or order_id = '".htmlspecialchars($_GET['search'])."' ORDER BY order_id DESC LIMIT ".$nOnpage." OFFSET ".$offset);
+                    $orders = $pdo->prepare("SELECT * FROM orders  ORDER BY order_id DESC LIMIT ".$nOnpage." OFFSET ".$offset);
                     $orders->execute();
                 }catch (PDOException $e) {
                     echo 'Nie udało się odczytać danych z bazy';

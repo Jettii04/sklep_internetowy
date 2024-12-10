@@ -159,7 +159,7 @@ if(isset($_POST['submit'])){
             </thead>
             <tbody>
                 <tr>
-                    <td><input type="text" id="user" name="user" class="form-control" placeholder="Login..." value="" required></td>
+                    <td><input type="text" id="user" name="user" class="form-control" placeholder="Login..." value=""></td>
                     <?php 
                         echo'
                         <td><select type="text" id="delivery_method" name="delivery_method" class="form-control"  value="" required>

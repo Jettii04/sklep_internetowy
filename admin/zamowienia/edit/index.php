@@ -164,7 +164,7 @@ if(isset($_POST['submit'])){
                 foreach($orders as $order){
                     echo '
                         <tr>
-                            <td><input type="text" id="user" name="user" class="form-control" placeholder="Login..." value="'.$order['user'].'" required></td>
+                            <td><input type="text" id="user" name="user" class="form-control" placeholder="Login..." value="'.$order['user'].'"></td>
                     ';
 
                     echo'
