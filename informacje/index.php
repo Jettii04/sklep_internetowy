@@ -82,9 +82,9 @@ require_once("../scripts/database.php");
                 <h2><?php echo $site['header']?></h2>    
                 <hr>
             </div>
-            <div class="container" style="color: black; font-size:20px">
-            <?php echo $site['body']?>
-            </div>
+            <pre class="container" style="color: black; font-size:20px">
+<?php echo $site['body']?>
+            </pre>
         </div>
     </div>
 </div>
