@@ -41,7 +41,7 @@ if(isset($_POST['submit'])){
 <html lang="pl">
 <head>
     <meta charset="utf-8">
-    <title>Kategorie</title>
+    <title>Pracownicy</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="your-project-dir/icon-font/lineicons.css" rel="stylesheet" >
     <link href="https://cdn.lineicons.com/5.0/lineicons.css" rel="stylesheet" >
@@ -144,7 +144,7 @@ if(isset($_POST['submit'])){
         <div class="p-4">
             <form method="post" action="">
             <div style="color: black">
-            <h2>Kategorie</h2> 
+            <h2>Pracownicy - Dodaj</h2> 
             <hr>
             </div>
 
