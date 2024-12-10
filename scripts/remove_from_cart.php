@@ -1,6 +1,5 @@
 <?php
 session_start();
-// Plik odpowiedzialny za sprawdzanie formularza 
 
 require_once("database.php");
 if(isset($_SESSION['login'])){

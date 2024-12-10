@@ -1,6 +1,5 @@
 <?php
 session_start();
-// Plik odpowiedzialny za sprawdzanie formularza 
 require_once("database.php");
     $data = [
         'category' => $_POST['category_id']
