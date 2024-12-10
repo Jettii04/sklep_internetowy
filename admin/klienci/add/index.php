@@ -24,6 +24,16 @@ if(isset($_POST['submit'])){
         echo 'Nie udało się odczytać danych z bazy';
         //exit();
     }
+    $data = [
+        'login' => $_POST['login']
+    ];
+    try {
+    $q = $pdo->prepare("INSERT INTO carts (user) VALUES (:login)");
+    $q->execute($data);
+    }catch (PDOException $e) {
+        echo 'Nie udało się utworzyć konta';
+        //exit();
+    }
     header("location: ../");
 }
 ?>
